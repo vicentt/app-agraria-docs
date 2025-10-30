@@ -1,6 +1,6 @@
-# App Agricultura - Documentación
+# Agraria - Documentación
 
-Bienvenido a la documentación técnica y funcional del proyecto **App Agricultura**.
+Bienvenido a la documentación técnica y funcional del proyecto **Agraria**.
 
 ## 📚 Índice de Documentación
 
@@ -22,7 +22,7 @@ Bienvenido a la documentación técnica y funcional del proyecto **App Agricultu
 
 ## 🚀 Acerca del Proyecto
 
-Esta documentación contiene toda la información necesaria para comprender, desarrollar y utilizar la aplicación App Agricultura.
+Esta documentación contiene toda la información necesaria para comprender, desarrollar y utilizar la aplicación Agraria.
 
 ## 📝 Cómo Usar Esta Documentación
 
@@ -30,4 +30,4 @@ Navega a través de los diferentes documentos usando los enlaces anteriores. Cad
 
 ---
 
-© 2025 App Agricultura - Documentación del Proyecto
+© 2025 Agraria - Documentación del Proyecto

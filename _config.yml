@@ -1,6 +1,6 @@
 theme: jekyll-theme-cayman
-title: App Agricultura - Documentación
-description: Documentación técnica y funcional del proyecto App Agricultura
+title: Agraria - Documentación
+description: Documentación técnica y funcional del proyecto Agraria
 markdown: kramdown
 plugins:
   - jekyll-relative-links
