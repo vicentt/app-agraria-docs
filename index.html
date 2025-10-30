@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación - App Agricultura</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        main {
+            padding: 3rem 2rem;
+        }
+
+        .intro {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .intro h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .intro p {
+            color: #666;
+            font-size: 1.05rem;
+        }
+
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .doc-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .doc-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .doc-card h3 {
+            color: #667eea;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .doc-card .icon {
+            font-size: 1.5rem;
+        }
+
+        .doc-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .doc-category {
+            margin-bottom: 3rem;
+        }
+
+        .doc-category h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #667eea;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #f8f9fa;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            main {
+                padding: 2rem 1.5rem;
+            }
+
+            .docs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>App Agricultura</h1>
+            <p>Documentación Técnica y Funcional del Proyecto</p>
+        </header>
+
+        <main>
+            <div class="intro">
+                <h2>Bienvenido a la Documentación</h2>
+                <p>Esta documentación contiene toda la información técnica y funcional del proyecto App Agricultura. Selecciona cualquier documento para ver su contenido completo.</p>
+            </div>
+
+            <div class="doc-category">
+                <h2>Análisis y Arquitectura</h2>
+                <div class="docs-grid">
+                    <a href="DOCS_01_ANALISIS_FUNCIONAL.html" class="doc-card">
+                        <h3><span class="icon">📋</span>Análisis Funcional</h3>
+                        <p>Documento completo de análisis funcional del proyecto, incluyendo requisitos, casos de uso y especificaciones detalladas.</p>
+                    </a>
+
+                    <a href="DOCS_MVP_02_MODELO_DATOS_SQL.html" class="doc-card">
+                        <h3><span class="icon">🗄️</span>Modelo de Datos SQL</h3>
+                        <p>Estructura completa de la base de datos, esquemas SQL, relaciones entre tablas y diseño del modelo de datos.</p>
+                    </a>
+
+                    <a href="DOCS_MVP_03_ARQUITECTURA_TECNICA.html" class="doc-card">
+                        <h3><span class="icon">🏗️</span>Arquitectura Técnica</h3>
+                        <p>Diseño de la arquitectura del sistema, componentes técnicos, stack tecnológico y patrones de diseño utilizados.</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="doc-category">
+                <h2>Documentación del Cliente</h2>
+                <div class="docs-grid">
+                    <a href="DOCS_CLIENTE_01_GUIA_FUNCIONAL.html" class="doc-card">
+                        <h3><span class="icon">📘</span>Guía Funcional</h3>
+                        <p>Guía completa para el usuario final sobre cómo utilizar la aplicación, funcionalidades disponibles y casos de uso prácticos.</p>
+                    </a>
+
+                    <a href="DOCS_CLIENTE_02_COMPARATIVA.html" class="doc-card">
+                        <h3><span class="icon">📊</span>Comparativa</h3>
+                        <p>Análisis comparativo de la aplicación con otras soluciones del mercado, ventajas competitivas y diferenciadores.</p>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 App Agricultura - Documentación del Proyecto</p>
+        </footer>
+    </div>
+</body>
+</html>

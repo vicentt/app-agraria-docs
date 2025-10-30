@@ -1,0 +1,9 @@
+theme: jekyll-theme-cayman
+title: App Agricultura - Documentación
+description: Documentación técnica y funcional del proyecto App Agricultura
+markdown: kramdown
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
