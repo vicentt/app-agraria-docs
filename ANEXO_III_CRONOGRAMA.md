@@ -26,7 +26,7 @@
 
 | Componente | Tecnología | Propósito |
 |------------|-----------|-----------|
-| **Diseño UI/UX** | Figma | Wireframes, mockups y prototipos |
+| **Diseño UI/UX** | Figma / Papel | Wireframes y guía de estilo visual |
 | **App Móvil** | React Native + Expo | Aplicación multiplataforma (iOS + Android) |
 | **Backend API** | .NET 8 Web API | Servicios REST y lógica de negocio |
 | **Base de Datos** | PostgreSQL | Almacenamiento persistente |
@@ -54,7 +54,7 @@
 | Fase | Duración | Entregable Principal | % Proyecto |
 |------|----------|---------------------|------------|
 | **Fase 0: Preparación** | 1 semana | Infraestructura + Configuración inicial | 3% |
-| **Fase 1: Diseño UI/UX** | 2 semanas | Wireframes, Mockups y Guía de Estilo | 7% |
+| **Fase 1: Diseño UI/UX** | 2 semanas | Wireframes y Guía de Estilo Visual | 7% |
 | **Fase 2: Core Backend** | 4 semanas | API con módulos fundamentales | 15% |
 | **Fase 3: App Móvil Base** | 4 semanas | App con autenticación + navegación | 14% |
 | **Fase 4: Gestión de Trabajos** | 5 semanas | Publicación + Aplicaciones + Estados | 18% |
@@ -133,7 +133,7 @@ Conforme a la cláusula 6.2 del contrato, se establecen los siguientes hitos:
 - Creación de proyecto React Native (Expo)
 - Configuración de pipeline CI/CD básico
 - Setup de herramientas de gestión (Jira/Trello + Slack/Teams)
-- Configuración de Figma para diseño colaborativo
+- Preparación de herramientas de diseño (Figma/Sketch o alternativas)
 
 #### Entregables
 - ✅ Repositorios configurados
@@ -141,7 +141,7 @@ Conforme a la cláusula 6.2 del contrato, se establecen los siguientes hitos:
 - ✅ Base de datos PostgreSQL inicializada
 - ✅ Proyecto móvil ejecutable (pantalla "Hello World")
 - ✅ Proyecto backend ejecutable (endpoint /health)
-- ✅ Espacio de trabajo Figma preparado
+- ✅ Herramientas de diseño preparadas
 
 ---
 
@@ -169,21 +169,21 @@ Conforme a la cláusula 6.2 del contrato, se establecen los siguientes hitos:
 - Favoritos
 - Panel de Administración (versión web)
 
-#### Semana 2: Mockups y Guía de Estilo
+#### Semana 2: Guía de Estilo Visual
 **Actividades:**
-- Definición de paleta de colores (sector agrícola)
-- Selección de tipografías (legibilidad en campo)
-- Diseño de componentes reutilizables
-- Mockups en alta fidelidad de todas las pantallas
-- Prototipo interactivo básico
+- Definición de paleta de colores (tonos verdes/tierra para sector agrícola)
+- Selección de tipografías (legibilidad en campo, pantallas soleadas)
+- Especificación de logos y marca visual
+- Definición de iconografía básica
+- Documentación de espaciados y tamaños
+- Especificación de componentes visuales básicos (botones, inputs, cards)
 - **Sesión de aprobación con Cliente**
 
 **Entregables Fase 1:**
-- ✅ Wireframes completos de 40+ pantallas
-- ✅ Mockups en alta fidelidad (Figma)
-- ✅ Guía de estilo / Design System
-- ✅ Prototipo interactivo navegable
-- ✅ Biblioteca de componentes UI
+- ✅ Wireframes completos de 40+ pantallas principales
+- ✅ Guía de estilo visual (colores, tipografías, logos)
+- ✅ Especificación de componentes básicos
+- ✅ Documentación de marca y diseño visual
 - ✅ **Aprobación del Cliente documentada**
 
 #### Dependencia Crítica
@@ -328,7 +328,7 @@ Conforme a la cláusula 6.2 del contrato, se establecen los siguientes hitos:
 - ✅ Design System implementado consistentemente
 - ✅ Autenticación completa integrada con backend
 - ✅ Navegación fluida entre secciones
-- ✅ Diseño UI/UX implementado según mockups aprobados
+- ✅ Diseño UI/UX implementado según wireframes y guía de estilo aprobados
 - ✅ Multiidioma operativo (ES + CA)
 - ✅ Gestión de estado y caché configurada
 
@@ -618,7 +618,7 @@ Conforme a la cláusula 6.2 del contrato, se establecen los siguientes hitos:
 - ✅ Todos los flujos principales funcionales
 - ✅ Sin bugs bloqueantes
 - ✅ <5 bugs críticos pendientes
-- ✅ Diseño implementado según mockups
+- ✅ Diseño implementado según wireframes y guía de estilo
 - ✅ Rendimiento aceptable (<2s carga de pantallas)
 
 #### Semana 2-3: Refinamiento y Optimización
@@ -678,14 +678,14 @@ Conforme a la cláusula 6.2 del contrato, se establecen los siguientes hitos:
 ## 5. ENTREGABLES POR FASE
 
 ### Documentación Técnica
-- **Fase 1:** Documentación de diseño (wireframes, mockups, guía de estilo)
+- **Fase 1:** Documentación de diseño (wireframes, guía de estilo visual)
 - **Fase 2:** Documentación API (Swagger/Postman)
 - **Fase 3:** Guía de instalación y configuración móvil
 - **Fase 7:** Manual de administrador
 - **Fase 8:** Documentación completa consolidada + videos
 
 ### Entregables de Diseño
-- **Fase 1:** Wireframes + Mockups + Prototipo interactivo + Guía de estilo
+- **Fase 1:** Wireframes + Guía de estilo visual (colores, tipografías, logos)
 
 ### Entregables de Código
 - **Todas las fases:** Código en repositorio con commits descriptivos
@@ -710,7 +710,7 @@ Conforme a la cláusula 6.2 del contrato, se establecen los siguientes hitos:
 ### Generales (Todas las Fases)
 - ✅ Código funcional sin errores críticos
 - ✅ Cumple especificaciones del Análisis Funcional
-- ✅ Diseño implementado según mockups aprobados
+- ✅ Diseño implementado según wireframes y guía de estilo aprobados
 - ✅ Compatible con iOS 14+ y Android 9+
 - ✅ Tiempos de respuesta API <500ms (promedio)
 - ✅ Multiidioma completo (ES + CA)
@@ -774,7 +774,7 @@ Conforme a la cláusula 6.2 del contrato, se establecen los siguientes hitos:
 | **Servicios de notificaciones push** | Setup APNS + FCM en Fase 0, tests en Fase 4 |
 | **Almacenamiento de imágenes** | Configurar bucket cloud en Fase 0, validar en Fase 2 |
 | **Servidor de base de datos** | Provisionar PostgreSQL managed en Fase 0 |
-| **Figma para diseño** | Suscripción activa desde Fase 0 |
+| **Herramientas de diseño** | Figma/Sketch o alternativas disponibles desde Fase 0 |
 | **Herramientas de testing** | Configurar TestFlight + Firebase App Distribution en Fase 3 |
 
 ### Riesgos Identificados
@@ -812,7 +812,7 @@ Conforme a la cláusula 6.2 del contrato, se establecen los siguientes hitos:
 | Hito | Fase | Semana Aprox | Entregable | % Pago | Acumulado |
 |------|------|--------------|-----------|--------|-----------|
 | **Kickoff** | 0 | 0 | Infraestructura lista + Diseño iniciado | - | 0% |
-| **Diseño Aprobado** | 1 | 3 | Mockups y guía de estilo aprobados | - | 0% |
+| **Diseño Aprobado** | 1 | 3 | Wireframes y guía de estilo visual aprobados | - | 0% |
 | **Demostración Funcional** | 5 | 17 | App + Backend + Feed + Maquinaria + Favoritos | 30% | 30% |
 | **Versión Beta Completa** | 7 | 24 | Todas funcionalidades + Reputación + Panel Admin | 40% | 70% |
 | **Entrega Final** | 8 | 28 | Producción + Documentación + Capacitación | 30% | 100% |
