@@ -1,0 +1,315 @@
+CONTRATO DE DESARROLLO DE APLICACIÓN MÓVIL Y SERVICIOS ASOCIADOS
+En Madrid, a 25/10/2025.
+
+REUNIDOS
+De una parte, CODELIO S.L., con C.I.F. B56797426, y domicilio social en Calle Estrella Denébola, 21, 5ºA, 28045 Madrid, representada en este acto por Vicente José Moreno Escobar, en su calidad de Representante Legal, en adelante denominada el “Proveedor” o “CODELIO”.
+Y de otra, AGRICULTURAL SERVICES MANAGEMENT, SL, con C.I.F./N.I.F. B56603343, y domicilio en C/ AFORES, 1 BUTSENIT D'URGELL, 25616 MONTGAI (LLEIDA), representada en este acto por JOSEP AMIGO MARSA, en su calidad de ADMINISTRADOR UNICO, en adelante denominada el “Cliente”.
+
+El Proveedor y el Cliente, conjuntamente denominados las “Partes”, reconocen recíprocamente la capacidad legal necesaria para contratar y, a tal efecto,
+EXPONEN
+	•	Que el Proveedor es una empresa especializada en el desarrollo de aplicaciones informáticas, software a medida y soluciones tecnológicas, con experiencia en proyectos basados en .NET, React Native y SQL Server/MySQL, así como en la gestión integral del ciclo de vida de proyectos digitales. 
+	•	Que el Cliente está interesado en el desarrollo de una aplicación móvil orientada al sector agrícola, con funcionalidades y alcances definidos en la Propuesta Comercial / Presupuesto emitida por el Proveedor con fecha [dd/mm/aaaa], versión [vX.Y] (en adelante, la “Propuesta”). 
+	•	Que ambas Partes desean formalizar la relación contractual que regirá el desarrollo del proyecto, conforme a los términos y condiciones establecidos en el presente contrato y sus anexos. 
+
+Las Partes manifiestan que las obligaciones contenidas en este contrato reflejan íntegramente los acuerdos alcanzados entre ellas y sustituyen a cualquier comunicación previa que no se haya incorporado expresamente como anexo al mismo.
+En virtud de lo expuesto, las Partes acuerdan formalizar el presente Contrato de Desarrollo de Aplicación Móvil y Servicios Asociados, el cual se regirá por las cláusulas que se detallan a continuación, junto con los anexos que forman parte integrante del mismo.
+
+
+
+1. Objeto
+El presente contrato tiene por objeto el diseño, desarrollo e implantación de una aplicación móvil denominada “Proyecto AGRARIA” (nombre provisional, en adelante la “Aplicación”), destinada a conectar oferta y demanda de trabajo agrícola, destinada a conectar oferta y demanda de trabajo agrícola y a optimizar procesos en entornos rurales, conforme a las especificaciones funcionales y técnicas recogidas en la Propuesta Comercial / Presupuesto de fecha [dd/mm/aaaa], versión [vX.Y] (en adelante, la “Propuesta”), que se incorpora como Anexo I y forma parte integrante del presente contrato.
+El nombre “Proyecto AGRARIA” se utiliza únicamente como denominación interna provisional hasta que el Cliente confirme el nombre comercial definitivo de la Aplicación.
+A tales efectos:
+	•	Alcance técnico. El proyecto comprenderá: 
+	•	Frontend desarrollado en React Native (iOS y Android). 
+	•	Backend desarrollado en .NET, con base de datos SQL Server o MySQL (según se confirme en la Propuesta). 
+	•	Pipeline de integración y despliegue continuo (CI/CD) y gestión del código fuente en [GitHub / Azure DevOps]. 
+	•	Ambientes de Desarrollo, Preproducción y Producción.
+
+	•	Los repositorios de código, pipelines CI/CD y entornos intermedios (Desarrollo y Preproducción) utilizados internamente por el Proveedor para la ejecución del proyecto son de titularidad del Proveedor. El Cliente tendrá derecho a recibir el código fuente y toda la documentación técnica en el momento y condiciones establecidas en la cláusula 7, pero no adquiere derecho alguno sobre las cuentas o infraestructuras internas del Proveedor. 
+	•	Entregables. Los entregables, su contenido, criterios de aceptación y planificación se detallan en el Anexo II (Entregables y Cronograma). 
+	•	Servicios incluidos. Gestión de proyecto, análisis funcional y técnico, desarrollo, QA/Testing, apoyo al go-live y formación básica de uso. El mantenimiento/soporte posterior, de ser contratado, se regirá por el Anexo V (SLA). 
+	•	Exclusiones y supuestos. Quedan excluidos los elementos expresamente indicados como tales en la Propuesta (p. ej., costes de licencias de terceros, cuotas de stores, servicios cloud, SMS, mapas, etc.), así como evolutivos no previstos, salvo acuerdo mediante Solicitud de Cambio (CR) conforme al Anexo III. 
+	•	Orden de documentos. En caso de discrepancia, prevalecerá lo previsto en el presente contrato; para alcance y entregables, prevalecerá lo descrito en el Anexo I (Propuesta) frente a comunicaciones o materiales comerciales no anexados. 
+2. Definiciones
+A efectos de interpretación y aplicación del presente contrato, los siguientes términos tendrán el significado que se indica a continuación, salvo que del contexto se desprenda lo contrario:
+	•	Aplicación: Se refiere a la aplicación móvil denominada provisionalmente “Proyecto AGRARIA”, objeto del presente contrato, desarrollada conforme a la Propuesta (Anexo I). 
+	•	Propuesta: Documento comercial y técnico elaborado por el Proveedor con fecha [dd/mm/aaaa], versión [vX.Y], que detalla el alcance funcional, técnico y económico del proyecto, y que se incorpora como Anexo I. 
+	•	Entregables: Resultados parciales o finales del proyecto, descritos en el Anexo II (Entregables y Cronograma), que deberán cumplir los criterios de aceptación definidos en dicho anexo. 
+	•	UAT (User Acceptance Testing) o Pruebas de Aceptación de Usuario: Fase en la que el Cliente valida los Entregables mediante pruebas funcionales, verificando que cumplen con lo acordado. 
+	•	SLA (Service Level Agreement): Acuerdo de Niveles de Servicio que regula los tiempos de respuesta y resolución durante la fase de mantenimiento o soporte (Anexo V). 
+	•	CR (Change Request) o Solicitud de Cambio: Documento o comunicación formal mediante la cual el Cliente solicita modificaciones respecto al alcance inicial. Su gestión se regula en el Anexo III. 
+	•	Partes: El Cliente y el Proveedor conjuntamente. 
+	•	DPA (Data Processing Agreement) o Anexo de Tratamiento de Datos: Documento que regula las obligaciones del Proveedor como Encargado del Tratamiento de datos personales, conforme al Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018. 
+	•	Producción: Entorno operativo definitivo donde la Aplicación estará disponible para los usuarios finales. 
+	•	Fuerza Mayor: Cualquier causa o circunstancia imprevisible o inevitable ajena a la voluntad de las Partes que impida total o parcialmente el cumplimiento de las obligaciones del contrato. 
+	•	Aceptación / Aceptación Tácita: Se entenderá por Aceptación la conformidad expresa del Cliente respecto de un Entregable o Hito. A efectos del presente contrato, también se considerará Aceptación la ausencia de objeciones escritas y motivadas por parte del Cliente transcurridos diez (10) días naturales desde la entrega formal o puesta a disposición del Entregable correspondiente.
+
+
+3. Alcance y Metodología
+3.1. Alcance del Proyecto
+El Proveedor desarrollará la Aplicación “Proyecto AGRARIA”, cuyo objetivo es conectar oferta y demanda de trabajo agrícola, facilitando la interacción entre empleadores y trabajadores del sector rural, conforme a lo definido en la Propuesta (Anexo I).
+El alcance funcional y técnico comprenderá, de forma general:
+	•	Desarrollo de aplicación móvil multiplataforma (iOS y Android) con React Native. 
+	•	Desarrollo de backend en .NET, con base de datos SQL Server o MySQL, según se confirme con el Cliente. 
+	•	Implementación de una API REST segura para la comunicación entre el frontend y el backend. 
+	•	Diseño e integración de interfaces de usuario (UI/UX) conforme a los prototipos aprobados. 
+	•	Configuración de entornos de desarrollo, preproducción y producción, con mecanismos de CI/CD (integración y despliegue continuo). 
+	•	Funcionalidades básicas de autenticación, gestión de usuarios, perfiles, ofertas de empleo, postulaciones, mensajería y notificaciones. 
+	•	Panel de administración web (si está incluido en la Propuesta) para la gestión de contenidos, usuarios y ofertas. 
+	•	Documentación técnica y manual de uso. 
+Cualquier elemento no expresamente indicado en la Propuesta se considerará fuera de alcance, y su incorporación requerirá la aprobación de un Cambio de Alcance (CR) conforme al Anexo III.
+
+3.2. Metodología de Trabajo
+El desarrollo se llevará a cabo siguiendo una metodología ágil, basada en iteraciones y revisiones continuas, que permitirá al Cliente ver avances funcionales de forma periódica.
+Las fases principales del proyecto serán:
+	•	Análisis funcional y técnico detallado. 
+	•	Diseño UI/UX y validación de prototipos. 
+	•	Desarrollo iterativo del frontend y backend. 
+	•	Pruebas internas del Proveedor (QA). 
+	•	Demostración funcional al Cliente (primer hito de avance con pago del 30%). 
+	•	Entrega de versión Beta y pruebas de aceptación (UAT). 
+	•	Corrección de incidencias y entrega final para puesta en producción. 
+Cada entrega intermedia que se ponga a disposición del Cliente (incluyendo demo funcional, versiones Beta y Release Candidate) será objeto de validación por parte del Cliente en el plazo máximo de diez (10) días naturales. Transcurrido dicho plazo sin notificación escrita y detallada de incidencias bloqueantes, la entrega se considerará aceptada a todos los efectos contractuales (Aceptación Tácita), habilitando la facturación del hito asociado.
+El Cliente podrá solicitar revisiones o feedback durante las fases intermedias. Los comentarios aceptados se incorporarán dentro del alcance previsto, siempre que no alteren la funcionalidad acordada.
+
+
+3.3. Responsabilidades del Cliente
+El Cliente se compromete a colaborar activamente con el Proveedor para el correcto desarrollo del proyecto, facilitando en tiempo y forma toda la información, documentación y materiales necesarios.
+En particular, el Cliente deberá:
+	•	Designar un interlocutor único con capacidad de decisión técnica y funcional. 
+	•	Validar las propuestas de diseño, maquetas y entregables dentro de los plazos acordados, aportando feedback claro y completo. 
+	•	Facilitar, cuando proceda, textos, imágenes, traducciones, credenciales de acceso, licencias o datos requeridos para el desarrollo o integración de la Aplicación. 
+	•	Comunicar con antelación cualquier circunstancia que pueda afectar al calendario del proyecto. 
+Los retrasos o falta de colaboración que impidan la evolución normal del desarrollo podrán suponer ajustes en los plazos de entrega y, en su caso, en la planificación de pagos, previa notificación por parte del Proveedor.
+En caso de retraso por parte del Cliente en la entrega de información, aprobaciones, contenidos, accesos o validaciones necesarios para la continuidad del proyecto durante más de diez (10) días naturales, el Proveedor podrá: (i) replanificar los hitos y fechas de entrega; (ii) emitir la factura correspondiente al trabajo efectivamente realizado hasta ese momento con base en el grado de avance real; y/o (iii) suspender temporalmente los trabajos hasta la subsanación del retraso, sin que tal suspensión constituya incumplimiento del Proveedor.
+
+
+3.4. Cronograma y Entregables
+El detalle de los entregables, sus criterios de aceptación y el cronograma estimado se incluyen en el Anexo II (Entregables y Cronograma), que podrá actualizarse de mutuo acuerdo entre las Partes según la evolución del proyecto.
+
+4. Criterios de Aceptación y Validación de Entregas (UAT)
+4.1. Validación por hitos. El proyecto se desarrollará conforme a los hitos establecidos en el Anexo II (Entregables y Cronograma), y cada hito incluirá la entrega de uno o varios componentes funcionales de la aplicación.
+4.2. Hito de demostración funcional. Una vez completada una versión con funcionalidades principales operativas y navegación real, el Proveedor realizará una demostración funcional al Cliente, que permitirá verificar el avance real y tangible del desarrollo. Este hito, constituirá Entregable a efectos de facturación y activará el pago del porcentaje correspondiente según la cláusula 6, sin perjuicio de que no implique todavía la aceptación final del proyecto.
+4.3. Pruebas de aceptación (UAT). Completado el desarrollo completo, el Proveedor pondrá a disposición del Cliente una versión candidata (Release Candidate) para realizar las Pruebas de Aceptación de Usuario (UAT). El Cliente dispondrá de un plazo de diez (10) días naturales desde la notificación para realizar las pruebas y comunicar por escrito su aceptación o, en su caso, una relación detallada de incidencias clasificadas como bloqueantes.  Transcurrido dicho plazo sin comunicación, se entenderá otorgada la Aceptación Tácita a todos los efectos.
+4.4. Criterios de aceptación. Se considerará que un entregable ha sido aceptado cuando:
+	•	Cumpla los requisitos funcionales y técnicos descritos en la Propuesta (Anexo I). 
+	•	Las incidencias comunicadas sean menores o no bloqueantes, no impidiendo el uso general de la Aplicación. 
+	•	El Cliente emita su conformidad expresa, o transcurrido el plazo de validación sin comunicación de incidencias, se entenderá la aceptación tácita del entregable. 
+4.5. Corrección de incidencias. El Proveedor corregirá las incidencias clasificadas como bloqueantes o críticas dentro del plazo razonable acordado entre las Partes. Una vez solventadas, el Cliente realizará una revisión final para confirmar la aceptación del entregable.  Quedan excluidas de esta obligación de corrección las observaciones meramente estéticas, de contenido, de textos, de cambios de criterio funcional posterior o de solicitudes de nueva funcionalidad no prevista en el alcance aprobado en el Anexo I, que se gestionarán como Solicitud de Cambio (CR) conforme a la cláusula 5.
+4.6. Entrega final y puesta en producción. Una vez aceptados los entregables finales, se procederá a la puesta en producción o publicación de la Aplicación en los entornos correspondientes. Este momento marcará el inicio de la garantía y, en su caso, del servicio de mantenimiento o soporte, conforme a los Anexos IV y V.
+
+5. Control de Cambios
+5.1. Alcance cerrado. El proyecto se ejecutará conforme al alcance funcional, técnico y visual descrito en la Propuesta  Comercial incorporada como Anexo I. No se admitirán modificaciones, ampliaciones o ajustes de ningún tipo sobre dicho alcance una vez iniciado el desarrollo, salvo que se formalicen mediante un nuevo contrato o adenda económica independiente firmada por ambas Partes.
+5.2. No aceptación de cambios no pactados. Cualquier petición, sugerencia o comentario del Cliente que implique alteración, ampliación o sustitución de funcionalidades, flujos, pantallas, textos o comportamiento de la Aplicación respecto a lo definido en el Anexo I, será considerada fuera del alcance contractual, aunque el Cliente la califique como “ajuste menor”, “optimización” o “mejora sin impacto”.
+5.3. Modificaciones por nuevo acuerdo. Solo mediante la firma de una adenda contractual específica se podrán incorporar nuevos requerimientos o modificaciones. Dicha adenda deberá detallar expresamente los cambios, su impacto técnico, económico y en plazos, y no generará obligación alguna para el Proveedor hasta su aceptación formal.
+5.4. Documentación de cambios. En caso de que las Partes acuerden modificaciones, éstas se documentarán mediante adenda al contrato y se anexarán como Anexo III – Registro de Cambios Autorizados, quedando sin efecto cualquier comunicación informal o verbal.
+5.5. Prohibición de ejecución sin aprobación. El Proveedor no estará obligado a iniciar el desarrollo de ningún cambio o ajuste solicitado hasta recibir la aprobación expresa y por escrito del Cliente tanto del coste como del plazo adicional que conlleve.
+5.6. Salvaguarda de alcance original. La no aceptación o no ejecución de un cambio por parte del Proveedor no podrá ser considerada incumplimiento contractual, siempre que el desarrollo cumpla íntegramente las funcionalidades, características y entregables especificados en el Anexo I.
+6. Precio y Forma de Pago
+6.1. Precio total. El precio total del proyecto asciende a [importe total en euros], impuestos no incluidos, conforme al presupuesto detallado en la Propuesta Comercial / Presupuesto (Anexo I).
+6.2. Estructura de pagos por hitos. Las Partes acuerdan que los pagos se efectuarán en función del avance real del desarrollo, conforme a los siguientes hitos:
+Hito
+Descripción
+% Pago
+Momento de Facturación
+1
+Demostración funcional: versión operativa que muestre las principales pantallas y flujos de la aplicación, evidenciando el avance real del desarrollo (sin ser la versión final ni UAT).
+30 %
+Tras la presentación de la versión funcional al Cliente.
+2
+Versión Beta completa: incluye todas las funcionalidades previstas en la Propuesta, lista para pruebas de aceptación (UAT).
+40 %
+Tras la entrega de la versión Beta y la puesta a disposición para la fase UAT.
+3
+Entrega final / Puesta en producción: aplicación validada y aceptada (o aceptada tácitamente) conforme a los criterios definidos en el contrato.
+30 %
+Tras la aceptación final o Aceptación Tácita del proyecto por parte del Cliente, y antes de la entrega definitiva del código fuente conforme a la cláusula 7.
+6.3. Ausencia de anticipo. No se establece ningún pago inicial a la firma del presente contrato. El primer pago (30 %) se efectuará una vez presentada la demostración funcional, como indicado en el punto 1 anterior, de forma que el Cliente pueda comprobar de manera tangible el avance del desarrollo.
+6.4. Forma de facturación y plazo. Cada hito será facturado por el Proveedor una vez cumplido el criterio correspondiente  y puesta a disposición del Cliente la entrega asociada. El Cliente dispondrá de un plazo máximo de diez (10) días naturales para formular objeciones motivadas de carácter bloqueante. Transcurrido dicho plazo sin objeción escrita se entenderá aceptado el hito (Aceptación Tácita) y la factura será plenamente exigible.  Las facturas serán pagaderas en un plazo máximo de treinta (30) días naturales desde su fecha de emisión.
+6.5. Retrasos en el pago. El retraso en el pago de una factura superior a 15 días naturales sobre la fecha de vencimiento facultará al Proveedor a suspender temporalmente los trabajos y retener los entregables hasta la regularización del pago, sin que ello suponga incumplimiento por su parte. Los importes impagados devengarán el interés legal del dinero incrementado en dos (2) puntos porcentuales.
+6.6. Costes adicionales y servicios Cloud.
+Quedan excluidos del precio total del proyecto los gastos derivados de servicios o recursos externos necesarios para el despliegue o funcionamiento de la Aplicación, incluyendo, entre otros:
+	•	Infraestructura Cloud para el alojamiento de la API y la base de datos, que se realizará en un servicio de Cloud pública (AWS, Google Cloud o Microsoft Azure), cuya plataforma definitiva se determinará de común acuerdo entre las Partes. 
+	•	Licencias o suscripciones de terceros, como librerías, frameworks, servicios de mensajería, correo electrónico, SMS, geolocalización o pasarelas de pago. 
+	•	Cuotas de publicación o tasas asociadas a tiendas de aplicaciones (App Store, Google Play). 
+	•	Servicios de hosting, monitorización, backups o almacenamiento adicional no incluidos en la Propuesta. 
+Los costes asociados a dichos servicios serán asumidos directamente por el Cliente o repercutidos por el Proveedor previa autorización expresa.
+El Proveedor se compromete a asesorar al Cliente en la selección del servicio Cloud más adecuado y a configurar la infraestructura siguiendo buenas prácticas de seguridad, escalabilidad y disponibilidad, garantizando que los datos permanezcan alojados dentro del Espacio Económico Europeo (EEE) o bajo las debidas garantías legales de transferencia internacional conforme al RGPD.
+El Cliente reconoce que el rendimiento, disponibilidad, niveles de servicio y costes de dichos servicios externos (infraestructura Cloud, mensajería, geolocalización, pasarelas de pago, etc.) dependen de terceros ajenos al control del Proveedor. En consecuencia, el Proveedor no asume responsabilidad alguna por interrupciones, incidencias, rechazos de servicio o cambios de precio que deriven de dichos servicios de terceros.
+
+
+7. Propiedad Intelectual y Licencias
+7.1. Titularidad del desarrollo. Todo el software, código fuente, documentación técnica, interfaces, diseños, materiales y demás entregables desarrollados específicamente por el Proveedor en el marco del presente contrato serán propiedad intelectual exclusiva del Proveedor hasta el pago íntegro del proyecto conforme a la cláusula 6.
+Una vez abonado el 100% del importe acordado, el Proveedor otorgará al Cliente una licencia no exclusiva, indefinida y libre de regalías para el uso y explotación del software desarrollado exclusivamente en el marco de su propia actividad empresarial, incluyendo su ejecución, despliegue y utilización por sus usuarios finales.
+La presente licencia no incluye los derechos de modificación, transformación, mantenimiento ni creación de obras derivadas sobre el código fuente o sus componentes, salvo autorización previa y por escrito del Proveedor.
+Cualquier intervención técnica de mantenimiento, actualización o evolución sobre el software se realizará por el Proveedor o bajo su supervisión, en las condiciones que se establezcan en los acuerdos de mantenimiento posteriores (Anexo V o contrato independiente).
+La cesión de derechos de uso y explotación no será efectiva ni el Cliente podrá explotar el software en entornos productivos hasta que el pago íntegro haya sido realizado.
+El Proveedor conservará, en todo caso, la propiedad del código fuente original, sin perjuicio de la licencia de uso concedida al Cliente.
+
+7.2. Conservación del know-how del Proveedor. El Proveedor conservará la plena titularidad sobre:
+	•	Su know-how, metodologías, utilidades, frameworks, plantillas, librerías, arquitecturas base, componentes genéricos y cualquier otra herramienta o fragmento de código preexistente o desarrollado de forma no exclusiva para la ejecución del presente proyecto. 
+	•	La arquitectura técnica y estructura base del código empleada como estándar interno. 
+Sobre dichos elementos, el Proveedor concede al Cliente, una vez abonado el 100% del importe acordado, una licencia de uso interna, no exclusiva, no transferible y libre de regalías limitada al correcto funcionamiento del “Proyecto AGRARIA”.
+
+7.3. Software y servicios de terceros. Cuando el desarrollo incorpore componentes, librerías, servicios o frameworks de terceros (por ejemplo, librerías open source, SDKs de autenticación, pasarelas de pago, geolocalización, SMS, correo transaccional o servicios Cloud como AWS, Google Cloud o Azure), el Cliente acepta las condiciones de licencia o uso asociadas a dichos servicios.  El Proveedor garantizará que todas las herramientas utilizadas cuentan con licencias válidas y compatibles con el presente contrato.
+
+7.4. Diseños, marcas y contenidos. El Cliente conservará los derechos sobre logotipos, marcas, textos, imágenes y demás contenidos que haya proporcionado para su integración en la Aplicación, declarando que dispone de las licencias o derechos necesarios para su uso.  El Proveedor no asumirá responsabilidad alguna por reclamaciones derivadas de contenidos proporcionados por el Cliente.
+
+7.5. Entrega del código fuente y documentación. Una vez finalizado el proyecto y efectuado el pago completo, el Proveedor pondrá a disposición del Cliente:
+	•	El código fuente de la Aplicación, alojado en el repositorio acordado (p. ej. GitHub, Azure DevOps), únicamente a efectos de transparencia, auditoría y respaldo contractual. 
+	•	La documentación técnica y manual de despliegue necesarios para la correcta instalación y operación del software en entornos autorizados.
+La entrega del código fuente no confiere al Cliente derecho de modificación o mantenimiento del mismo sin autorización expresa del Proveedor.
+El Proveedor no estará obligado a entregar el código fuente, la documentación técnica ni las credenciales definitivas de los entornos acordados hasta que se haya producido el pago íntegro de todas las cantidades devengadas, incluyendo la factura correspondiente al último hito.
+
+7.6. Derecho de autoría. El Cliente autoriza al Proveedor a mencionar la participación de CODELIO S.L. como desarrollador del proyecto en su portafolio profesional o material corporativo, siempre sin divulgar información confidencial ni datos del Cliente.
+
+8. Confidencialidad y Protección de Datos (RGPD)
+8.1. Confidencialidad
+Ambas Partes se comprometen a mantener estricta confidencialidad sobre toda la información técnica, comercial o de cualquier otra naturaleza a la que tengan acceso con motivo del presente contrato, y a no divulgarla ni utilizarla con fines distintos de los expresamente previstos en el mismo.
+Esta obligación:
+	•	Se mantendrá durante la vigencia del contrato y por un periodo adicional de cinco (5) años tras su terminación. 
+	•	No se aplicará a la información que sea pública, que deba divulgarse por mandato legal o que se haya obtenido legítimamente de terceros sin deber de confidencialidad. 
+El Proveedor adoptará medidas razonables para proteger la información del Cliente frente a accesos no autorizados, pérdida o uso indebido.
+
+8.2. Protección de datos personales
+Cuando, como consecuencia de la ejecución del contrato, el Proveedor (CODELIO S.L.) tenga acceso a datos personales responsabilidad del Cliente, actuará como Encargado del Tratamiento, conforme al Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018.
+En este contexto:
+a) Finalidad del tratamiento. La prestación de los servicios descritos en el contrato: desarrollo, pruebas, soporte y alojamiento de la Aplicación.
+b) Duración. Durante la vigencia del contrato y, tras su finalización, el tiempo estrictamente necesario para la devolución o supresión de los datos.
+c) Tipo de datos y categorías de interesados. Datos de identificación, contacto y uso de usuarios de la Aplicación, empleados, colaboradores o terceros vinculados al Cliente.
+d) Obligaciones del Proveedor. CODELIO se compromete a:
+	•	Tratar los datos únicamente siguiendo instrucciones documentadas del Cliente. 
+	•	Garantizar que las personas autorizadas para el tratamiento se comprometen a la confidencialidad. 
+	•	Aplicar medidas técnicas y organizativas adecuadas para garantizar la seguridad, integridad y disponibilidad de los datos. 
+	•	No comunicar los datos a terceros salvo autorización expresa o exigencia legal. 
+	•	Asistir al Cliente en el cumplimiento de sus obligaciones en materia de seguridad, brechas y ejercicio de derechos. 
+	•	Suprimir o devolver todos los datos personales una vez finalizada la prestación del servicio. 
+
+8.3. Subencargados y servicios Cloud
+Para la prestación técnica de los servicios, CODELIO podrá recurrir a subencargados que presten servicios de infraestructura Cloud, tales como Amazon Web Services (AWS), Google Cloud Platform (GCP) o Microsoft Azure.
+Estos proveedores:
+	•	Cumplen con el RGPD y con las cláusulas contractuales tipo de la Comisión Europea, garantizando la protección adecuada de los datos. 
+	•	Alojan los datos dentro del Espacio Económico Europeo (EEE) o en ubicaciones que ofrezcan garantías equivalentes. 
+El Cliente autoriza expresamente el uso de dichos subencargados a los únicos efectos de alojamiento y operación de la Aplicación, sin que ello implique cesión o comunicación de datos fuera de los fines del contrato.
+
+8.4. Brechas de seguridad
+En caso de incidente o violación de seguridad que afecte a los datos personales tratados, el Proveedor notificará al Cliente sin dilación indebida y, en todo caso, en un máximo de 72 horas desde que tenga conocimiento del hecho, facilitando la información necesaria para su evaluación y gestión conforme al RGPD.
+El Proveedor no será responsable de brechas de seguridad derivadas de configuraciones realizadas por el Cliente o por terceros designados por éste, del uso indebido de credenciales por parte del Cliente, ni de incidencias originadas en servicios de infraestructura, mensajería, pasarela de pago o almacenamiento que sean titularidad del Cliente o de terceros ajenos al control directo del Proveedor.
+
+8.5. Documento de Encargado del Tratamiento (DPA)
+Las obligaciones y detalles complementarios sobre protección de datos se desarrollan en el Anexo IV (Acuerdo de Encargado del Tratamiento – DPA), que forma parte integrante del presente contrato.
+
+
+9. Garantía
+9.1. Periodo de garantía. El Proveedor garantiza el correcto funcionamiento de la Aplicación durante un periodo de cuarenta y cinco (45) días naturales a contar desde la aceptación del proyecto (expresa o tácita) o la puesta en producción, lo que ocurra antes.
+Durante dicho periodo, el Proveedor se compromete a corregir sin coste adicional únicamente los defectos de software que:
+	•	sean reproducibles;  
+	•	sean imputables directamente al desarrollo realizado por el Proveedor; y 
+	•	tengan carácter bloqueante al impedir el uso normal de las funcionalidades acordadas en el alcance del proyecto
+Quedan excluidos, asimismo, todos aquellos defectos e incidencias que:
+	•	se deriven de un uso inadecuado de la Aplicación; 
+	•	sean consecuencia de modificaciones realizadas por terceros o por el propio Cliente; 
+	•	Se trate de incidencias provocadas por servicios externos (por ejemplo, proveedores Cloud, APIs de terceros, App Store, Google Play, etc.). 
+
+9.2. Alcance de la garantía. La garantía cubre errores o incidencias funcionales que impidan el correcto uso de las funcionalidades descritas en la Propuesta (Anexo I). Quedan expresamente excluidos:
+	•	Cambios de diseño, textos o mejoras no contempladas en el alcance inicial. 
+	•	Actualizaciones evolutivas, adaptativas o tecnológicas (por ejemplo, nuevas versiones de iOS/Android o librerías externas). 
+	•	Incidencias derivadas de configuraciones o integraciones ajenas al Proveedor. 
+Quedan excluidas de la garantía las adaptaciones o cambios requeridos por actualizaciones de terceros (por ejemplo, cambios en políticas de App Store/Google Play, nuevas versiones de sistemas operativos móviles, cambios en APIs externas o librerías de terceros) posteriores a la fecha de Aceptación.
+
+9.3. Atención y corrección de errores. Las incidencias comunicadas durante el periodo de garantía serán clasificadas por severidad (bloqueante, crítica o menor) y atendidas en plazos razonables según su impacto, de acuerdo con los tiempos indicados en el Anexo V (SLA de soporte), en caso de existir.
+
+9.4. Extensión mediante mantenimiento. Una vez finalizado el periodo de garantía, el Cliente podrá contratar un servicio de mantenimiento y soporte con el Proveedor en las condiciones que se establezcan en el Anexo V, o mediante acuerdo independiente, para cubrir:
+	•	Actualizaciones técnicas, 
+	•	Soporte funcional, 
+	•	Pequeños evolutivos, 
+	•	Ajustes ante cambios en sistemas operativos, librerías o dependencias externas. 
+
+9.5. Limitación. El Proveedor no será responsable por pérdidas de datos, interrupciones de servicio o daños indirectos derivados del uso de la Aplicación.
+La responsabilidad total del Proveedor, en cualquier caso, no excederá del importe total abonado por el Cliente en los 12 meses anteriores al incidente.
+
+10. Mantenimiento, Observabilidad y Evoluciones
+10.1. Fase posterior al desarrollo. Una vez completado y aceptado el proyecto, la Aplicación requerirá servicios continuados de mantenimiento técnico, observabilidad, soporte y evolución funcional, necesarios para garantizar su correcto funcionamiento, estabilidad, rendimiento y seguridad a lo largo del tiempo.
+10.2. No incluido en el presente contrato. Estos servicios no forman parte del alcance ni del precio establecidos en el presente contrato.
+Su alcance, condiciones técnicas, niveles de servicio (SLA) y tarifas se definirán mediante una nueva propuesta comercial o contrato específico que las Partes formalizarán tras la entrega y aceptación del proyecto.
+10.3. Compromiso de continuidad. El Proveedor (CODELIO S.L.) podrá ofrecer al Cliente dichos servicios de mantenimiento, soporte, observabilidad o evolutivos tras la entrega del proyecto, en condiciones que se negociarán en su momento. En ningún caso se entenderá que el Proveedor asume la obligación de prestar dichos servicios si no existe un acuerdo específico y vigente que regule su alcance y contraprestación económica.
+10.4. Tipos de mantenimiento previstos.  A título informativo, los servicios que podrían incluirse en dicho acuerdo posterior comprenden:
+	•	Mantenimiento correctivo: resolución de errores o incidencias no cubiertas por la garantía. 
+	•	Mantenimiento adaptativo: actualización de librerías, frameworks, dependencias o compatibilidad con nuevas versiones de sistemas operativos (iOS, Android, .NET, etc.). 
+	•	Mantenimiento evolutivo: incorporación de nuevas funcionalidades o mejoras. 
+	•	Mantenimiento preventivo y observabilidad: monitorización de la infraestructura Cloud (AWS, Google Cloud o Azure), copias de seguridad, logs, métricas de rendimiento y alertas. 
+10.5. Transición o traspaso.  En caso de que el Cliente decidiera contratar estos servicios con un tercero, el Proveedor colaborará razonablemente en el traspaso técnico y documental de la Aplicación, según los términos que se acuerden entre las Partes.
+Cualquier colaboración en tareas de traspaso, formación técnica, exportación de datos, soporte a terceros designados por el Cliente o acciones equivalentes de reversibilidad será facturada conforme a las tarifas vigentes del Proveedor en ese momento.
+11. Limitación de Responsabilidad y Fuerza Mayor
+11.1. Limitación de responsabilidad
+El Proveedor responderá únicamente de los daños y perjuicios directos ocasionados al Cliente como consecuencia de un incumplimiento probado de sus obligaciones contractuales.
+En ningún caso el Proveedor será responsable por:
+	•	Lucro cesante, pérdida de beneficios, pérdida de datos o daños indirectos derivados del uso o imposibilidad de uso de la Aplicación. 
+	•	Incidencias o caídas provocadas por servicios de terceros, tales como plataformas Cloud (AWS, Google Cloud, Azure), proveedores de correo, SMS, mapas, APIs o tiendas de aplicaciones (App Store, Google Play). 
+	•	Errores ocasionados por modificaciones del Cliente o de terceros sobre el código entregado. 
+La responsabilidad total del Proveedor, por cualquier causa y bajo cualquier circunstancia, no podrá exceder del importe total efectivamente abonado por el Cliente durante los doce (12) meses anteriores al hecho que origine la reclamación.
+
+11.2. Mitigación de daños
+El Cliente se compromete a colaborar activamente para minimizar el impacto de cualquier incidencia o daño potencial, notificando de inmediato al Proveedor cualquier defecto, error o mal funcionamiento detectado.
+
+11.3. Fuerza mayor
+Ninguna de las Partes será responsable por el incumplimiento o retraso en el cumplimiento de sus obligaciones cuando dicho incumplimiento se deba a causa de fuerza mayor, entendiéndose por tal cualquier evento imprevisible o inevitable ajeno a la voluntad de las Partes, incluyendo, entre otros:
+	•	Fallos generalizados en redes de telecomunicaciones o servicios de terceros, 
+	•	Desastres naturales, incendios, inundaciones, guerras, huelgas, conflictos laborales o pandemias, 
+	•	Actos de autoridad o restricciones gubernamentales, 
+	•	Ciberataques o interrupciones masivas de servicios Cloud. 
+La Parte afectada por una causa de fuerza mayor deberá notificarlo por escrito a la otra Parte en un plazo máximo de cinco (5) días hábiles desde su conocimiento, adoptando las medidas razonables para mitigar sus efectos.
+Si la situación de fuerza mayor se prolongara por más de treinta (30) días consecutivos, cualquiera de las Partes podrá resolver el contrato sin penalización alguna.
+Durante el periodo en que concurra la causa de fuerza mayor, el Proveedor podrá suspender parcial o totalmente la prestación de los servicios sin que ello constituya incumplimiento ni genere derecho a indemnización alguna por parte del Cliente.
+12. Vigencia y Terminación
+12.1. Entrada en vigor y duración
+El presente contrato entrará en vigor en la fecha de su firma por ambas Partes y permanecerá vigente hasta la aceptación final del proyecto o, en su caso, hasta la finalización de las tareas de entrega y puesta en producción descritas en el Anexo II (Cronograma).
+La duración estimada del proyecto se establece en dicho Anexo, pudiendo ajustarse de común acuerdo entre las Partes en función de la evolución técnica y de los hitos alcanzados.
+
+12.2. Terminación por cumplimiento
+El contrato se considerará cumplido y extinguido una vez:
+	•	El Cliente haya aceptado formalmente la entrega final, y 
+	•	El Proveedor haya entregado la documentación técnica y el código fuente, 
+	•	Y se haya efectuado el pago total del precio pactado. 
+A partir de ese momento comenzará el periodo de garantía definido en la cláusula 9.
+
+12.3. Terminación anticipada por causa justificada
+Cualquiera de las Partes podrá resolver el contrato antes de su finalización en los siguientes casos:
+a) Incumplimiento grave de las obligaciones contractuales esenciales por la otra Parte, siempre que no haya sido subsanado en un plazo de quince (15) días naturales desde la notificación escrita del incumplimiento.  b) Fuerza mayor prolongada, conforme a lo previsto en la cláusula 11.3, cuando la causa se extienda más de treinta (30) días consecutivos.  c) Falta de pago reiterada de las facturas emitidas conforme a los hitos acordados.
+En todos los casos, la Parte cumplidora podrá exigir la compensación de los daños y perjuicios acreditados.
+
+12.4. Efectos de la terminación
+En caso de terminación anticipada del contrato por causa no imputable al Proveedor, el Cliente deberá abonar:
+	•	Las cantidades devengadas hasta la fecha efectiva de terminación, 
+	•	Los trabajos en curso o parcialmente completados, y 
+	•	Cualesquiera costes no recuperables razonablemente incurridos por el Proveedor. 
+El Proveedor entregará al Cliente, una vez abonadas las cantidades devengadas y los trabajos en curso según lo anterior, los materiales, avances o documentación producidos hasta la fecha, en el estado en que se encuentren, exclusivamente para fines internos de evaluación. En ningún caso dicha entrega parcial implicará cesión de derechos de explotación, ni obligación de entrega del código fuente completo o credenciales de entornos productivos si el Cliente no ha satisfecho la totalidad de los importes pendientes conforme a la cláusula 6..
+
+12.5. Reversibilidad y traspaso
+Finalizado el contrato —por cumplimiento o resolución—, CODELIO S.L. entregará al Cliente:
+	•	El código fuente y documentación disponibles, 
+	•	Las credenciales de acceso a los entornos o repositorios acordados, 
+	•	Y, en su caso, colaborará razonablemente en el traspaso técnico a otro proveedor, siempre que el Cliente esté al corriente de pago.
+Toda asistencia adicional de traspaso técnico solicitada por el Cliente tras la terminación será objeto de facturación específica y no estará incluida en el precio del presente contrato.
+13. Comunicaciones y Notificaciones
+13.1. Todas las comunicaciones entre las Partes relativas al presente contrato deberán realizarse por escrito, a través de los medios acordados (correo electrónico, mensajería profesional o herramienta de gestión del proyecto).
+13.2. Se considerarán válidas las notificaciones remitidas a las siguientes direcciones, salvo actualización comunicada por escrito:
+	•	Proveedor (CODELIO S.L.)  Calle Estrella Denébola 21, 5ºA  28045 Madrid  Correo electrónico: [ tu-email@codelio.com ] 
+	•	Cliente:  [ Nombre o razón social ]  [ Dirección completa ]  Correo electrónico: [ correo del representante ] 
+13.3. Cualquier cambio de dirección o correo electrónico deberá ser comunicado a la otra Parte con al menos cinco (5) días hábiles de antelación para que surta efecto.
+
+14. Ley aplicable y jurisdicción
+14.1. El presente contrato se regirá e interpretará de conformidad con la legislación española, en especial el Código Civil y la normativa sobre servicios y contratos electrónicos aplicables.
+14.2. Las Partes acuerdan someter cualquier controversia, discrepancia o reclamación que pudiera surgir en relación con la interpretación o ejecución del presente contrato a los Juzgados y Tribunales de la ciudad de Madrid, con renuncia expresa a cualquier otro fuero que pudiera corresponderles, salvo que las Partes acuerden previamente someterse a un procedimiento de mediación o arbitraje de carácter voluntario.
+
+15. Nulidad parcial
+Si cualquiera de las disposiciones del presente contrato fuese declarada, total o parcialmente, nula o inválida, tal nulidad o invalidez no afectará a las restantes disposiciones del contrato, que permanecerán en pleno vigor. Las Partes negociarán de buena fe la sustitución de la cláusula afectada por otra válida y de efecto económico lo más equivalente posible.
+
+16. Aceptación y firma
+En prueba de conformidad, las Partes firman el presente Contrato de Desarrollo de Aplicación Móvil y Servicios Asociados por duplicado y a un solo efecto, en el lugar y fecha indicados en el encabezado.
+Por el Cliente  Nombre: ________________________  Cargo: ________________________  Firma: ________________________  Fecha: ________________________
+Por el Proveedor (CODELIO S.L.)  Nombre: ________________________  Cargo: ________________________  Firma: ________________________  Fecha: ________________________
+
+
+
