@@ -18,10 +18,6 @@ Bienvenido a la documentación técnica y funcional del proyecto **Agraria**.
 
 - **[Comparativa](DOCS_CLIENTE_02_COMPARATIVA.md)** - Análisis comparativo de la aplicación con otras soluciones del mercado, ventajas competitivas y diferenciadores.
 
-### Documentación Legal
-
-- **[Contrato de Desarrollo](CONTRATO_AGRARIA.md)** - Contrato de desarrollo de aplicación móvil y servicios asociados. Incluye términos, condiciones, alcance, estructura de pagos y propiedad intelectual del proyecto.
-
 ---
 
 ## 🚀 Acerca del Proyecto
