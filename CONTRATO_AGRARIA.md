@@ -338,90 +338,230 @@ La garantía cubre errores o incidencias funcionales que impidan el correcto uso
 
 #### Quedan excluidos:
 
-- Cambios de diseño, textos o mejoras no contempladas
-- Actualizaciones evolutivas o tecnológicas
-- Incidencias derivadas de configuraciones ajenas al Proveedor
+- Cambios de diseño, textos o mejoras no contempladas en el alcance inicial
+- Actualizaciones evolutivas, adaptativas o tecnológicas (por ejemplo, nuevas versiones de iOS/Android o librerías externas)
+- Incidencias derivadas de configuraciones o integraciones ajenas al Proveedor
+
+Quedan excluidas de la garantía las adaptaciones o cambios requeridos por actualizaciones de terceros (por ejemplo, cambios en políticas de App Store/Google Play, nuevas versiones de sistemas operativos móviles, cambios en APIs externas o librerías de terceros) posteriores a la fecha de Aceptación.
+
+### 9.3. Atención y corrección de errores
+
+Las incidencias comunicadas durante el periodo de garantía serán clasificadas por severidad (bloqueante, crítica o menor) y atendidas en plazos razonables según su impacto, de acuerdo con los tiempos indicados en el Anexo V (SLA de soporte), en caso de existir.
+
+### 9.4. Extensión mediante mantenimiento
+
+Una vez finalizado el periodo de garantía, el Cliente podrá contratar un servicio de mantenimiento y soporte con el Proveedor en las condiciones que se establezcan en el Anexo V, o mediante acuerdo independiente, para cubrir:
+
+- Actualizaciones técnicas
+- Soporte funcional
+- Pequeños evolutivos
+- Ajustes ante cambios en sistemas operativos, librerías o dependencias externas
+
+### 9.5. Limitación
+
+El Proveedor no será responsable por pérdidas de datos, interrupciones de servicio o daños indirectos derivados del uso de la Aplicación.
+
+La responsabilidad total del Proveedor, en cualquier caso, no excederá del importe total abonado por el Cliente en los 12 meses anteriores al incidente.
 
 ---
 
-## 10. Limitación de Responsabilidad
+## 10. Mantenimiento, Observabilidad y Evoluciones
 
-### 10.1. Limitación general
+### 10.1. Fase posterior al desarrollo
 
-La responsabilidad máxima del Proveedor quedará limitada al importe total facturado por el proyecto.
+Una vez completado y aceptado el proyecto, la Aplicación requerirá servicios continuados de mantenimiento técnico, observabilidad, soporte y evolución funcional, necesarios para garantizar su correcto funcionamiento, estabilidad, rendimiento y seguridad a lo largo del tiempo.
 
-### 10.2. Exclusiones
+### 10.2. No incluido en el presente contrato
 
-El Proveedor no será responsable de:
+Estos servicios no forman parte del alcance ni del precio establecidos en el presente contrato.
 
-- Daños indirectos, lucro cesante o pérdida de datos
-- Incidencias derivadas de servicios de terceros
-- Modificaciones no autorizadas por el Cliente
-- Uso inadecuado de la Aplicación
+Su alcance, condiciones técnicas, niveles de servicio (SLA) y tarifas se definirán mediante una nueva propuesta comercial o contrato específico que las Partes formalizarán tras la entrega y aceptación del proyecto.
 
-### 10.3. Servicios de terceros
+### 10.3. Compromiso de continuidad
 
-El Proveedor no asume responsabilidad por interrupciones, incidencias o cambios de precio de servicios externos (Cloud, mensajería, pasarelas de pago, etc.).
+El Proveedor (CODELIO S.L.) podrá ofrecer al Cliente dichos servicios de mantenimiento, soporte, observabilidad o evolutivos tras la entrega del proyecto, en condiciones que se negociarán en su momento.
 
----
+En ningún caso se entenderá que el Proveedor asume la obligación de prestar dichos servicios si no existe un acuerdo específico y vigente que regule su alcance y contraprestación económica.
 
-## 11. Duración y Resolución
+### 10.4. Tipos de mantenimiento previstos
 
-### 11.1. Duración
+A título informativo, los servicios que podrían incluirse en dicho acuerdo posterior comprenden:
 
-El contrato entrará en vigor en la fecha de su firma y se mantendrá vigente hasta la finalización del proyecto y cumplimiento de todas las obligaciones.
+- **Mantenimiento correctivo**: resolución de errores o incidencias no cubiertas por la garantía
+- **Mantenimiento adaptativo**: actualización de librerías, frameworks, dependencias o compatibilidad con nuevas versiones de sistemas operativos (iOS, Android, .NET, etc.)
+- **Mantenimiento evolutivo**: incorporación de nuevas funcionalidades o mejoras
+- **Mantenimiento preventivo y observabilidad**: monitorización de la infraestructura Cloud (AWS, Google Cloud o Azure), copias de seguridad, logs, métricas de rendimiento y alertas
 
-### 11.2. Causas de resolución
+### 10.5. Transición o traspaso
 
-El contrato podrá resolverse por:
+En caso de que el Cliente decidiera contratar estos servicios con un tercero, el Proveedor colaborará razonablemente en el traspaso técnico y documental de la Aplicación, según los términos que se acuerden entre las Partes.
 
-- Mutuo acuerdo de las Partes
-- Incumplimiento grave de alguna de las Partes
-- Imposibilidad sobrevenida por causa de Fuerza Mayor
-
-### 11.3. Efectos de la resolución
-
-En caso de resolución anticipada:
-
-- El Cliente abonará los trabajos efectivamente realizados hasta la fecha
-- El Proveedor conservará la propiedad intelectual sobre todo el desarrollo
-- Ambas Partes mantendrán las obligaciones de confidencialidad
+Cualquier colaboración en tareas de traspaso, formación técnica, exportación de datos, soporte a terceros designados por el Cliente o acciones equivalentes de reversibilidad será facturada conforme a las tarifas vigentes del Proveedor en ese momento.
 
 ---
 
-## 12. Fuerza Mayor
+## 11. Limitación de Responsabilidad y Fuerza Mayor
 
-Ninguna de las Partes será responsable por incumplimientos derivados de circunstancias de Fuerza Mayor (catástrofes naturales, guerras, pandemias, etc.).
+### 11.1. Limitación de responsabilidad
 
-La Parte afectada notificará a la otra en un plazo de **cinco (5) días naturales** y las obligaciones quedarán suspendidas durante el periodo que dure la causa de Fuerza Mayor.
+El Proveedor responderá únicamente de los daños y perjuicios directos ocasionados al Cliente como consecuencia de un incumplimiento probado de sus obligaciones contractuales.
+
+En ningún caso el Proveedor será responsable por:
+
+- Lucro cesante, pérdida de beneficios, pérdida de datos o daños indirectos derivados del uso o imposibilidad de uso de la Aplicación
+- Incidencias o caídas provocadas por servicios de terceros, tales como plataformas Cloud (AWS, Google Cloud, Azure), proveedores de correo, SMS, mapas, APIs o tiendas de aplicaciones (App Store, Google Play)
+- Errores ocasionados por modificaciones del Cliente o de terceros sobre el código entregado
+
+La responsabilidad total del Proveedor, por cualquier causa y bajo cualquier circunstancia, no podrá exceder del importe total efectivamente abonado por el Cliente durante los doce (12) meses anteriores al hecho que origine la reclamación.
+
+### 11.2. Mitigación de daños
+
+El Cliente se compromete a colaborar activamente para minimizar el impacto de cualquier incidencia o daño potencial, notificando de inmediato al Proveedor cualquier defecto, error o mal funcionamiento detectado.
+
+### 11.3. Fuerza mayor
+
+Ninguna de las Partes será responsable por el incumplimiento o retraso en el cumplimiento de sus obligaciones cuando dicho incumplimiento se deba a causa de fuerza mayor, entendiéndose por tal cualquier evento imprevisible o inevitable ajeno a la voluntad de las Partes, incluyendo, entre otros:
+
+- Fallos generalizados en redes de telecomunicaciones o servicios de terceros
+- Desastres naturales, incendios, inundaciones, guerras, huelgas, conflictos laborales o pandemias
+- Actos de autoridad o restricciones gubernamentales
+- Ciberataques o interrupciones masivas de servicios Cloud
+
+La Parte afectada por una causa de fuerza mayor deberá notificarlo por escrito a la otra Parte en un plazo máximo de cinco (5) días hábiles desde su conocimiento, adoptando las medidas razonables para mitigar sus efectos.
+
+Si la situación de fuerza mayor se prolongara por más de treinta (30) días consecutivos, cualquiera de las Partes podrá resolver el contrato sin penalización alguna.
+
+Durante el periodo en que concurra la causa de fuerza mayor, el Proveedor podrá suspender parcial o totalmente la prestación de los servicios sin que ello constituya incumplimiento ni genere derecho a indemnización alguna por parte del Cliente.
 
 ---
 
-## 13. Notificaciones
+## 12. Vigencia y Terminación
 
-Todas las comunicaciones entre las Partes deberán realizarse por escrito mediante:
+### 12.1. Entrada en vigor y duración
 
-- Correo electrónico con acuse de recibo
-- Correo certificado con acuse de recibo
-- Burofax
+El presente contrato entrará en vigor en la fecha de su firma por ambas Partes y permanecerá vigente hasta la aceptación final del proyecto o, en su caso, hasta la finalización de las tareas de entrega y puesta en producción descritas en el Anexo II (Cronograma).
 
-A las direcciones indicadas en el encabezamiento del contrato.
+La duración estimada del proyecto se establece en dicho Anexo, pudiendo ajustarse de común acuerdo entre las Partes en función de la evolución técnica y de los hitos alcanzados.
+
+### 12.2. Terminación por cumplimiento
+
+El contrato se considerará cumplido y extinguido una vez:
+
+- El Cliente haya aceptado formalmente la entrega final, y
+- El Proveedor haya entregado la documentación técnica y el código fuente,
+- Y se haya efectuado el pago total del precio pactado
+
+A partir de ese momento comenzará el periodo de garantía definido en la cláusula 9.
+
+### 12.3. Terminación anticipada por causa justificada
+
+Cualquiera de las Partes podrá resolver el contrato antes de su finalización en los siguientes casos:
+
+a) Incumplimiento grave de las obligaciones contractuales esenciales por la otra Parte, siempre que no haya sido subsanado en un plazo de quince (15) días naturales desde la notificación escrita del incumplimiento.
+
+b) Fuerza mayor prolongada, conforme a lo previsto en la cláusula 11.3, cuando la causa se extienda más de treinta (30) días consecutivos.
+
+c) Falta de pago reiterada de las facturas emitidas conforme a los hitos acordados.
+
+En todos los casos, la Parte cumplidora podrá exigir la compensación de los daños y perjuicios acreditados.
+
+### 12.4. Efectos de la terminación
+
+En caso de terminación anticipada del contrato por causa no imputable al Proveedor, el Cliente deberá abonar:
+
+- Las cantidades devengadas hasta la fecha efectiva de terminación
+- Los trabajos en curso o parcialmente completados, y
+- Cualesquiera costes no recuperables razonablemente incurridos por el Proveedor
+
+El Proveedor entregará al Cliente, una vez abonadas las cantidades devengadas y los trabajos en curso según lo anterior, los materiales, avances o documentación producidos hasta la fecha, en el estado en que se encuentren, exclusivamente para fines internos de evaluación.
+
+En ningún caso dicha entrega parcial implicará cesión de derechos de explotación, ni obligación de entrega del código fuente completo o credenciales de entornos productivos si el Cliente no ha satisfecho la totalidad de los importes pendientes conforme a la cláusula 6.
+
+### 12.5. Reversibilidad y traspaso
+
+Finalizado el contrato —por cumplimiento o resolución—, CODELIO S.L. entregará al Cliente:
+
+- El código fuente y documentación disponibles
+- Las credenciales de acceso a los entornos o repositorios acordados
+- Y, en su caso, colaborará razonablemente en el traspaso técnico a otro proveedor, siempre que el Cliente esté al corriente de pago
+
+Toda asistencia adicional de traspaso técnico solicitada por el Cliente tras la terminación será objeto de facturación específica y no estará incluida en el precio del presente contrato.
 
 ---
 
-## 14. Legislación Aplicable y Jurisdicción
+## 13. Comunicaciones y Notificaciones
+
+### 13.1. Forma de comunicación
+
+Todas las comunicaciones entre las Partes relativas al presente contrato deberán realizarse por escrito, a través de los medios acordados (correo electrónico, mensajería profesional o herramienta de gestión del proyecto).
+
+### 13.2. Direcciones válidas
+
+Se considerarán válidas las notificaciones remitidas a las siguientes direcciones, salvo actualización comunicada por escrito:
+
+**Proveedor (CODELIO S.L.)**
+- Calle Estrella Denébola 21, 5ºA
+- 28045 Madrid
+- Correo electrónico: [email del Proveedor]
+
+**Cliente (AGRICULTURAL SERVICES MANAGEMENT, SL)**
+- C/ AFORES, 1 BUTSENIT D'URGELL
+- 25616 MONTGAI (LLEIDA)
+- Correo electrónico: [email del Cliente]
+
+### 13.3. Cambio de direcciones
+
+Cualquier cambio de dirección o correo electrónico deberá ser comunicado a la otra Parte con al menos cinco (5) días hábiles de antelación para que surta efecto.
+
+---
+
+## 14. Ley Aplicable y Jurisdicción
 
 ### 14.1. Legislación
 
-El presente contrato se regirá e interpretará conforme a la legislación española.
+El presente contrato se regirá e interpretará de conformidad con la legislación española, en especial el Código Civil y la normativa sobre servicios y contratos electrónicos aplicables.
 
 ### 14.2. Jurisdicción
 
-Las Partes se someten a la jurisdicción de los Juzgados y Tribunales de **Madrid capital**, con renuncia expresa a cualquier otro fuero que pudiera corresponderles.
+Las Partes acuerdan someter cualquier controversia, discrepancia o reclamación que pudiera surgir en relación con la interpretación o ejecución del presente contrato a los Juzgados y Tribunales de la ciudad de **Madrid**, con renuncia expresa a cualquier otro fuero que pudiera corresponderles, salvo que las Partes acuerden previamente someterse a un procedimiento de mediación o arbitraje de carácter voluntario.
 
 ---
 
-## 15. Anexos
+## 15. Nulidad Parcial
+
+Si cualquiera de las disposiciones del presente contrato fuese declarada, total o parcialmente, nula o inválida, tal nulidad o invalidez no afectará a las restantes disposiciones del contrato, que permanecerán en pleno vigor.
+
+Las Partes negociarán de buena fe la sustitución de la cláusula afectada por otra válida y de efecto económico lo más equivalente posible.
+
+---
+
+## 16. Aceptación y Firma
+
+En prueba de conformidad, las Partes firman el presente Contrato de Desarrollo de Aplicación Móvil y Servicios Asociados por duplicado y a un solo efecto, en el lugar y fecha indicados en el encabezado.
+
+---
+
+### FIRMAS
+
+**Por el Cliente**
+
+- **Nombre**: JOSEP AMIGO MARSA
+- **Cargo**: ADMINISTRADOR ÚNICO
+- **Firma**: ________________________
+- **Fecha**: ________________________
+
+---
+
+**Por el Proveedor (CODELIO S.L.)**
+
+- **Nombre**: Vicente José Moreno Escobar
+- **Cargo**: Representante Legal
+- **Firma**: ________________________
+- **Fecha**: ________________________
+
+---
+
+## ANEXOS
 
 Forman parte integrante del presente contrato los siguientes anexos:
 
@@ -430,28 +570,6 @@ Forman parte integrante del presente contrato los siguientes anexos:
 - **Anexo III**: Registro de Cambios Autorizados (CR)
 - **Anexo IV**: Acuerdo de Encargado del Tratamiento (DPA)
 - **Anexo V**: Acuerdo de Niveles de Servicio (SLA) - si aplica
-
----
-
-## FIRMAS
-
-Y en prueba de conformidad con cuanto antecede, las Partes firman el presente contrato en dos ejemplares y a un solo efecto, en el lugar y fecha indicados en el encabezamiento.
-
-**Por CODELIO S.L. (Proveedor)**
-
-Firma:
-Nombre: Vicente José Moreno Escobar
-Cargo: Representante Legal
-Fecha:
-
----
-
-**Por AGRICULTURAL SERVICES MANAGEMENT, SL (Cliente)**
-
-Firma:
-Nombre: JOSEP AMIGO MARSA
-Cargo: ADMINISTRADOR ÚNICO
-Fecha:
 
 ---
 
