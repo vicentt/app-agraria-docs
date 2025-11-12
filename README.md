@@ -12,6 +12,8 @@ Bienvenido a la documentación técnica y funcional del proyecto **Agraria**.
 
 - **[Arquitectura Técnica](DOCS_MVP_03_ARQUITECTURA_TECNICA.md)** - Diseño de la arquitectura del sistema, componentes técnicos, stack tecnológico y patrones de diseño utilizados.
 
+- **[Cronograma del Proyecto](ANEXO_III_CRONOGRAMA.md)** - Planificación detallada del proyecto, fases, entregables, hitos de facturación y dependencias.
+
 ### Documentación del Cliente
 
 - **[Guía Funcional](DOCS_CLIENTE_01_GUIA_FUNCIONAL.md)** - Guía completa para el usuario final sobre cómo utilizar la aplicación, funcionalidades disponibles y casos de uso prácticos.
