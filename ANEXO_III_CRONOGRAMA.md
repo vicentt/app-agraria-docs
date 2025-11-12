@@ -3,7 +3,7 @@
 
 **Versión:** 2.0 Simplificada
 **Fecha:** Octubre 2025
-**Duración Estimada Total:** 24-26 semanas (6 meses)
+**Duración Estimada Total:** 28 semanas (~7 meses)
 **Metodología:** Ágil pragmática - entregar valor rápido
 
 ---
@@ -52,17 +52,17 @@
 
 | Fase | Duración | Entregable Principal | % Proyecto |
 |------|----------|---------------------|------------|
-| **Fase 0: Setup Rápido** | 3 días | Repos + DB + Hello World | 2% |
-| **Fase 1: Diseño Básico** | 1 semana | Wireframes + Colores | 5% |
-| **Fase 2: Backend Core** | 3 semanas | API funcional | 20% |
-| **Fase 3: App Móvil Base** | 3 semanas | Auth + Navegación | 15% |
-| **Fase 4: Trabajos** | 4 semanas | Publicar + Aplicar | 25% |
-| **Fase 5: Features Avanzadas** | 2 semanas | Feed + Favoritos + Maquinaria | 13% |
-| **Fase 6: Reputación** | 2 semanas | Ratings + Badges | 10% |
-| **Fase 7: Admin Panel** | 1 semana | Dashboard básico | 5% |
-| **Fase 8: Testing y Deploy** | 2 semanas | UAT + Producción | 5% |
+| **Fase 0: Setup Rápido** | 1 semana | Repos + DB + Hello World | 3% |
+| **Fase 1: Diseño Básico** | 2 semanas | Wireframes + Colores | 7% |
+| **Fase 2: Backend Core** | 4 semanas | API funcional | 15% |
+| **Fase 3: App Móvil Base** | 4 semanas | Auth + Navegación | 14% |
+| **Fase 4: Trabajos** | 5 semanas | Publicar + Aplicar | 18% |
+| **Fase 5: Features Avanzadas** | 3 semanas | Feed + Favoritos + Maquinaria | 11% |
+| **Fase 6: Reputación** | 3 semanas | Ratings + Badges | 11% |
+| **Fase 7: Admin Panel** | 2 semanas | Dashboard básico | 7% |
+| **Fase 8: Testing y Deploy** | 4 semanas | UAT + Producción | 14% |
 
-**Total:** 24 semanas (6 meses)
+**Total:** 28 semanas (~7 meses)
 
 ---
 
@@ -108,7 +108,7 @@
 ## 4. CRONOGRAMA DETALLADO POR FASE
 
 ### FASE 0: SETUP RÁPIDO
-**Duración:** 3 días
+**Duración:** 1 semana
 
 **Actividades:**
 - Crear repos Git
@@ -116,6 +116,7 @@
 - Proyecto .NET "Hello World"
 - Proyecto React Native "Hello World"
 - Deploy básico en cloud
+- Configuración de herramientas básicas
 
 **Entregables:**
 - ✅ Repos accesibles
@@ -130,18 +131,20 @@
 ---
 
 ### FASE 1: DISEÑO BÁSICO
-**Duración:** 1 semana
+**Duración:** 2 semanas
 
 **Actividades:**
 - Wireframes simples de pantallas principales (papel/Figma rápido)
 - Definir colores (verde/tierra)
 - Elegir tipografía
 - Logo básico
+- Revisión y ajustes con cliente
 
 **Entregables:**
 - ✅ Wireframes de ~20 pantallas clave
 - ✅ Paleta de colores definida
 - ✅ Tipografía elegida
+- ✅ Aprobación cliente
 
 **Sin pérdidas de tiempo en:**
 - ❌ Design System completo
@@ -151,7 +154,7 @@
 ---
 
 ### FASE 2: BACKEND CORE
-**Duración:** 3 semanas
+**Duración:** 4 semanas
 
 **Semana 1: Autenticación**
 - Register, Login, JWT
@@ -162,12 +165,16 @@
 - CRUD trabajos
 - Categorías
 - Estados
-- Upload imágenes
 
-**Semana 3: Aplicaciones + Maquinaria**
+**Semana 3: Imágenes y Aplicaciones**
+- Upload imágenes
 - CRUD aplicaciones
-- CRUD maquinaria
 - Seleccionar proveedor
+
+**Semana 4: Maquinaria y Ajustes**
+- CRUD maquinaria
+- Ajustes y optimizaciones
+- Testing básico
 
 **Endpoints:** ~30 endpoints REST
 
@@ -184,7 +191,7 @@
 ---
 
 ### FASE 3: APP MÓVIL BASE
-**Duración:** 3 semanas
+**Duración:** 4 semanas
 
 **Semana 1:**
 - Login/Register screens
@@ -201,6 +208,11 @@
 - Manejo de errores
 - Estado global básico
 
+**Semana 4:**
+- Integración completa backend
+- Pulir UX básica
+- Testing en dispositivos
+
 **Entregables:**
 - ✅ App instalable que autentica
 - ✅ Navegación funcional
@@ -214,7 +226,7 @@
 ---
 
 ### FASE 4: GESTIÓN DE TRABAJOS
-**Duración:** 4 semanas
+**Duración:** 5 semanas
 
 **Semana 1:**
 - Publicar trabajo (formulario 5 pasos)
@@ -234,7 +246,11 @@
 **Semana 4:**
 - Seleccionar proveedor
 - Estados del trabajo
+
+**Semana 5:**
 - Notificaciones push
+- Testing y ajustes
+- Pulir flujo completo
 
 **Entregables:**
 - ✅ Flujo completo funcional
@@ -247,17 +263,19 @@
 ---
 
 ### FASE 5: FEATURES AVANZADAS
-**Duración:** 2 semanas
+**Duración:** 3 semanas
 
 **Semana 1:**
 - Catálogo maquinaria completo
 - Sistema de favoritos
-- Feed ordenado por relevancia
 
 **Semana 2:**
+- Feed ordenado por relevancia
 - Optimizar feed
+
+**Semana 3:**
 - Pulir UX
-- Ajustes
+- Ajustes y testing
 
 **Entregables:**
 - ✅ Todas las features secundarias funcionando
@@ -269,7 +287,7 @@
 ---
 
 ### FASE 6: VALORACIONES Y REPUTACIÓN
-**Duración:** 2 semanas
+**Duración:** 3 semanas
 
 **Semana 1:**
 - Sistema de valoraciones bidireccionales
@@ -278,7 +296,10 @@
 **Semana 2:**
 - Badges automáticos (5 tipos)
 - Límites según reputación
+
+**Semana 3:**
 - Visualización badges
+- Testing y ajustes
 
 **Entregables:**
 - ✅ Sistema de reputación completo
@@ -290,14 +311,17 @@
 ---
 
 ### FASE 7: PANEL ADMIN
-**Duración:** 1 semana
+**Duración:** 2 semanas
 
-**Actividades:**
+**Semana 1:**
 - Login admin
 - Dashboard con métricas básicas
 - Lista trabajos asignados
+
+**Semana 2:**
 - Cambiar estados
 - Ver datos reales post-selección
+- Ajustes y testing
 
 **Entregables:**
 - ✅ Panel funcional desde ordenador
@@ -311,18 +335,22 @@
 ---
 
 ### FASE 8: TESTING Y DEPLOY
-**Duración:** 2 semanas
+**Duración:** 4 semanas
 
-**Semana 1:**
+**Semana 1-2:**
 - Cliente prueba todo (UAT)
-- Fix bugs críticos
-- Ajustes UX básicos
+- Fix bugs críticos y menores
+- Ajustes UX
 
-**Semana 2:**
+**Semana 3:**
 - Deploy a producción
 - Configurar notificaciones push prod
+- Testing en producción
+
+**Semana 4:**
 - Subir a stores (iniciar proceso)
 - README básico
+- Capacitación cliente
 
 **Entregables:**
 - ✅ App en producción funcionando
@@ -394,9 +422,9 @@
 | Hito | Fase | Semana | Qué cobras por | % | Acumulado |
 |------|------|--------|----------------|---|-----------|
 | **Inicio** | 0 | 0 | Setup | - | 0% |
-| **Demo Funcional** | 5 | 15 | App funcionando con flujo principal | 30% | 30% |
-| **Beta Completa** | 7 | 21 | TODO implementado | 40% | 70% |
-| **Producción** | 8 | 24 | App viva + código | 30% | 100% |
+| **Demo Funcional** | 5 | 16 | App funcionando con flujo principal | 30% | 30% |
+| **Beta Completa** | 7 | 22 | TODO implementado | 40% | 70% |
+| **Producción** | 8 | 28 | App viva + código | 30% | 100% |
 
 ---
 
