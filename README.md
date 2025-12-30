@@ -14,6 +14,8 @@ Bienvenido a la documentación técnica y funcional del proyecto **Agraria**.
 
 - **[Cronograma del Proyecto](ANEXO_III_CRONOGRAMA.md)** - Planificación detallada del proyecto, fases, entregables, hitos de facturación y dependencias.
 
+- **[Gestión de Cambios (CR)](ANEXO_IV_GESTION_CAMBIOS.md)** - Procedimiento para solicitudes de cambio, plantillas, impacto en plazos y costes.
+
 ### Documentación del Cliente
 
 - **[Guía Funcional](DOCS_CLIENTE_01_GUIA_FUNCIONAL.md)** - Guía completa para el usuario final sobre cómo utilizar la aplicación, funcionalidades disponibles y casos de uso prácticos.
