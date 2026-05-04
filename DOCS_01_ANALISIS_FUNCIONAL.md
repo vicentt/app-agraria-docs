@@ -51,8 +51,7 @@ El sistema tiene como objetivo principal:
 - Gestión de catálogo personal de maquinaria
 - Sistema de favoritos (trabajos y proveedores)
 - Construcción de reputación mediante badges y ratings
-- Interacción anónima hasta selección
-- Perfil público con pseudónimo
+- Interacción anónima con pseudónimos de un solo uso por acción (no trazables)
 
 #### Para Administradores:
 - Coordinación manual de trabajos asignados
@@ -133,7 +132,7 @@ Facilitar aplicaciones comparables mediante formulario predefinido (maquinaria +
 Mostrar trabajos ordenados por: 1) Categorías de interés, 2) Ubicación (provincia), 3) Compatibilidad con maquinaria, 4) Fecha publicación.
 
 #### OF-04: Protección de Identidades
-Generar pseudónimos automáticos (ej: "Agricultor_X7K2") y ocultar datos reales (email, teléfono) hasta que admin coordine tras selección.
+Generar pseudónimos automáticos de un solo uso por acción (ej: "Sereno-Olivo-A7F2") y ocultar datos reales (email, teléfono) hasta que admin coordine tras selección. Cada trabajo, aplicación y valoración genera un pseudónimo diferente para impedir la trazabilidad entre acciones.
 
 #### OF-05: Sistema de Reputación Progresiva
 Implementar badges automáticos (Verificado, Experto, Elite) y límites variables según historial (usuarios nuevos: 2 trabajos, consolidados: 5 trabajos).
@@ -190,9 +189,10 @@ Proporcionar panel web donde admin ve trabajos asignados, accede a datos reales 
 - ✅ Reseñas bidireccionales obligatorias (solicitante ↔ proveedor)
 - ✅ Rating 1-5 estrellas
 - ✅ Comentario corto obligatorio (20-200 caracteres, NO título)
-- ✅ No editable tras envío
-- ✅ Visible en perfil público
-- ✅ Cálculo automático de rating promedio
+- ✅ No editable tras envío (admin puede editar desde panel)
+- ✅ Visible en perfil público solo tras aprobación por admin
+- ✅ Cálculo automático de rating promedio (solo reseñas aprobadas)
+- ✅ Aprobación de reseñas por administrador antes de publicarse
 
 #### Sistema de Reputación
 - ✅ Badges automáticos:
@@ -294,8 +294,8 @@ Proporcionar panel web donde admin ve trabajos asignados, accede a datos reales 
 #### Feed Inteligente
 Ordenamiento por relevancia (categoría + ubicación + maquinaria) vs cronológico.
 
-#### Pseudónimos Anónimos
-Generación automática ("Agricultor_X7K2") para proteger identidades.
+#### Pseudónimos Anónimos de Un Solo Uso
+Generación automática por acción (ej: "Sereno-Olivo-A7F2") para proteger identidades. Cada trabajo, aplicación y valoración genera un pseudónimo diferente, impidiendo correlacionar acciones de un mismo usuario. No existen pseudónimos fijos por usuario.
 
 #### Estimación de Precio Automática
 Calculadora que muestra rango orientativo según categoría, superficie, duración.
@@ -922,6 +922,41 @@ El sistema debe permitir seleccionar una aplicación y coordinar con admin.
 
 ---
 
+#### RF-012b: Asignar Proveedor desde Admin
+**Prioridad:** Alta
+**Complejidad:** Alta
+
+**Descripción:**
+El admin debe poder asignar directamente a un aplicante como proveedor de un trabajo desde el panel de administración, sin necesidad de intervención del solicitante. Las aplicaciones se auto-aprueban al crearse (flujo de un solo paso, sin aprobación intermedia).
+
+**Criterios de aceptación:**
+- ✅ Solo aplicaciones con status "pending" pueden ser asignadas (las aplicaciones se auto-aprueban al crear)
+- ✅ Al asignar:
+  - Estado de la aplicación seleccionada → "accepted"
+  - Estado de las demás aplicaciones pendientes → "rejected"
+  - Estado del trabajo → "assigned"
+  - Notificación (push + email) al proveedor seleccionado
+  - Notificación (push + email) al solicitante informándole del proveedor asignado
+  - Email de coordinación al admin con datos reales de ambas partes
+  - Notificación (push + email) a proveedores rechazados
+- ✅ Modal de confirmación antes de ejecutar la asignación
+- ✅ Acción auditada en tabla admin_actions
+
+**Precondiciones:**
+- Usuario con rol admin autenticado
+- Trabajo tiene aplicaciones en estado pendiente
+- Trabajo no tiene proveedor ya asignado
+- Trabajo no está completado ni cancelado
+
+**Postcondiciones:**
+- Proveedor asignado al trabajo
+- Todas las partes notificadas (proveedor, solicitante, rechazados)
+- Auditoría registrada
+
+**Nota:** Eliminado el paso intermedio de aprobación de aplicaciones (2026-02-22). El solicitante no ve datos de las candidaturas — el admin gestiona la asignación directamente.
+
+---
+
 ### 6.4 Gestión de Maquinaria
 
 #### RF-013: Registrar Maquinaria
@@ -1008,8 +1043,9 @@ El sistema debe permitir valorar mutuamente tras completar trabajo.
 - Campos:
   - Rating (1-5 estrellas)
   - Comentario obligatorio (20-200 caracteres)
-- No editable tras envío
-- Actualiza automáticamente rating promedio del valorado
+- No editable tras envío (admin puede editar comentario desde panel)
+- Requiere aprobación de administrador antes de ser visible públicamente
+- Rating del valorado se actualiza solo al aprobar la reseña (no al crearla)
 
 **Precondiciones:**
 - Trabajo completado
@@ -1017,9 +1053,9 @@ El sistema debe permitir valorar mutuamente tras completar trabajo.
 - No ha valorado previamente
 
 **Postcondiciones:**
-- Valoración creada
-- Rating promedio del valorado actualizado
-- Trigger de asignación de badges ejecutado
+- Valoración creada con estado `pending_approval`
+- Notificación al admin de reseña pendiente
+- Rating del valorado NO se actualiza hasta aprobación
 
 **Validaciones:**
 - Rating entre 1 y 5
@@ -1400,7 +1436,7 @@ El sistema debe mostrar tips durante creación de trabajo.
 **Flujo principal:**
 1. Usuario clica "Publicar trabajo"
 2. Sistema muestra formulario paso 1: Categoría y descripción
-3. Usuario selecciona categoría (1 de 10)
+3. Usuario selecciona 1-3 categorías (de las 10 disponibles)
 4. Usuario escribe descripción
 5. Usuario opcionalmente añade fotos (máx 5)
 6. Usuario clica "Siguiente"
@@ -1565,10 +1601,12 @@ El sistema debe mostrar tips durante creación de trabajo.
 5. Usuario escribe comentario (20-200 caracteres)
 6. Usuario clica "Enviar valoración"
 7. Sistema valida longitud de comentario
-8. Sistema crea valoración
-9. Sistema actualiza rating_avg y rating_count del valorado
-10. Sistema ejecuta trigger de asignación de badges
-11. Sistema muestra confirmación "Valoración enviada"
+8. Sistema crea valoración con estado `pending_approval`
+9. Sistema muestra confirmación "Tu valoración será revisada antes de ser publicada"
+10. Admin recibe notificación de reseña pendiente en panel
+11. Admin revisa y aprueba/rechaza la reseña
+12. Si aprobada: sistema actualiza rating_avg y rating_count del valorado, ejecuta badges
+13. Usuario recibe notificación de reseña aprobada/rechazada
 
 **Flujo alternativo 6a: Comentario muy corto**
 - 6a1. Sistema muestra error "Comentario debe tener al menos 20 caracteres"
@@ -1576,9 +1614,9 @@ El sistema debe mostrar tips durante creación de trabajo.
 - 6a3. Vuelve a paso 6
 
 **Postcondiciones:**
-- Valoración creada
-- Rating del valorado actualizado
-- Posibles badges asignados
+- Valoración creada con estado `pending_approval`
+- Rating del valorado se actualiza al aprobar (no al crear)
+- Badges se evalúan al aprobar
 
 ---
 
@@ -1786,7 +1824,8 @@ El sistema debe mostrar tips durante creación de trabajo.
 **US-011:** Como usuario, quiero que mi identidad real esté oculta hasta que seleccionen mi aplicación para proteger mi privacidad.
 
 **Criterios de aceptación:**
-- Pseudónimo generado automáticamente (ej: "Proveedor_M9P4")
+- Pseudónimo de un solo uso generado automáticamente por cada acción (ej: "Sereno-Olivo-A7F2")
+- Cada acción (publicar trabajo, aplicar, valorar) genera un pseudónimo diferente, impidiendo correlacionar actividad
 - Email y teléfono NO visibles en app
 - Solo admin ve datos reales DESPUÉS de selección
 
@@ -1989,15 +2028,17 @@ El sistema debe mostrar tips durante creación de trabajo.
 - Tamaño máximo 1 MB por imagen
 - Formatos permitidos: JPG, PNG
 
-**RN-009: Generación de Pseudónimos**
-- Pseudónimo único generado automáticamente al publicar
-- Formato: "Agricultor_" + 4 caracteres alfanuméricos aleatorios
+**RN-009: Generación de Pseudónimos (Un Solo Uso)**
+- Pseudónimo único generado automáticamente por cada acción (trabajo, aplicación, valoración)
+- Formato: Adjetivo-Árbol-XXXX (ej: "Sereno-Olivo-A7F2")
+- Neutro: sin indicación de rol (no "Agricultor" ni "Proveedor")
 - No repetible en plataforma
+- Diferente por cada acción del mismo usuario (impide trazabilidad)
 
 **RN-010: Edición Limitada**
 - Solo editable por creador
 - Solo si estado = "published" Y aplicaciones = 0
-- Pseudónimo NO editable
+- Pseudónimo NO editable (inmutable por acción)
 
 ---
 
@@ -2088,12 +2129,21 @@ El sistema debe mostrar tips durante creación de trabajo.
 - Sin comentario no se puede enviar valoración
 
 **RN-028: Irreversibilidad de Valoración**
-- Valoración NO editable tras envío
+- Valoración NO editable tras envío por el usuario
+- Admin puede editar comentario desde panel de administración (moderación)
 - Previene chantaje ("mejora mi trabajo o cambio rating")
 
 **RN-029: Actualización de Rating Promedio**
-- Rating promedio se recalcula automáticamente tras cada nueva valoración
-- Fórmula: SUM(ratings) / COUNT(ratings)
+- Rating promedio se recalcula automáticamente solo con reseñas aprobadas
+- Fórmula: SUM(ratings aprobados) / COUNT(ratings aprobados)
+- Rating NO se actualiza al crear reseña, solo al aprobarla
+
+**RN-029b: Aprobación de Reseñas por Admin**
+- Las reseñas nuevas se crean con estado `pending_approval`
+- Un admin debe aprobar la reseña para que sea visible y afecte al rating
+- Al aprobar: se actualiza rating del valorado + se evalúan badges + se notifica al revisor
+- Al rechazar: se notifica al revisor con el motivo del rechazo
+- El admin puede editar el comentario antes de aprobar (moderación de contenido)
 
 ---
 
@@ -2242,6 +2292,53 @@ El sistema debe mostrar tips durante creación de trabajo.
 **RN-058: Logs Sin Información Sensible**
 - Logs de aplicación NO contienen passwords, tokens completos, datos personales
 - Solo IDs y pseudónimos
+
+---
+
+### 9.14 Reglas del Sistema de Aprobación por Administrador
+
+El sistema implementa un flujo de aprobación administrativa para garantizar la calidad del contenido y la confianza en la plataforma. Todas las entidades principales (usuarios, trabajos, maquinaria, aplicaciones) pasan por un proceso de revisión antes de ser visibles o funcionales.
+
+**RN-060: Aprobación Obligatoria de Usuarios Nuevos**
+- Todo usuario nuevo requiere aprobación de administrador antes de realizar acciones de escritura (publicar trabajos, registrar maquinaria, enviar aplicaciones)
+- El estado inicial del usuario tras el registro es `pending_approval`
+
+**RN-061: Aprobación Obligatoria de Trabajos**
+- Todo trabajo publicado requiere aprobación de administrador antes de ser visible en el feed
+- Los trabajos se crean en estado `pending_approval` en lugar de `published`
+- Solo los trabajos aprobados aparecen en el feed público y en búsquedas
+
+**RN-062: Aprobación Obligatoria de Maquinaria**
+- Toda maquinaria registrada requiere aprobación de administrador antes de ser visible para otros usuarios
+- La maquinaria se crea en estado `pending_approval`
+
+**RN-063: Aprobación Obligatoria de Aplicaciones**
+- Toda aplicación a un trabajo requiere aprobación de administrador antes de ser visible para el propietario del trabajo
+- Las aplicaciones se crean en estado `pending_approval`
+
+**RN-064: Modo Solo Lectura para Usuarios Pendientes**
+- Usuarios pendientes de aprobación pueden navegar el feed y ver detalles de trabajos (modo solo lectura)
+- No pueden publicar trabajos, registrar maquinaria ni aplicar a trabajos hasta ser aprobados
+
+**RN-065: Re-aprobación tras Edición de Entidades**
+- Editar una entidad aprobada (trabajo, maquinaria, aplicación) revierte su estado a `pending_approval`
+- Esto garantiza que el contenido modificado sea revisado nuevamente por un administrador
+
+**RN-066: Auditoría de Acciones de Aprobación**
+- Las acciones de aprobación/rechazo del administrador se registran en la tabla `admin_actions`
+- Cada registro incluye: administrador responsable, tipo de acción, entidad afectada y timestamp
+
+**RN-067: Motivo Obligatorio en Rechazos**
+- Al rechazar una entidad, el administrador debe proporcionar un motivo (`rejection_reason`)
+- El motivo de rechazo es visible para el usuario afectado
+
+**RN-068: Cancelación de Trabajos Rechazados**
+- Un trabajo rechazado por el administrador pasa automáticamente a estado `cancelled`
+- El usuario puede crear un nuevo trabajo corrigiendo los problemas indicados
+
+**RN-069: Edición de Perfil Sin Re-aprobación**
+- La edición de perfil de usuario (nombre, teléfono, avatar, ubicación, preferencias) NO requiere re-aprobación
+- Solo el registro inicial del usuario requiere aprobación
 
 ---
 

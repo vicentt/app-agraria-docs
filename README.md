@@ -1,8 +1,8 @@
-# Agraria - Documentación
+# Terralia - Documentación
 
-Bienvenido a la documentación técnica y funcional del proyecto **Agraria**.
+Bienvenido a la documentación técnica y funcional del proyecto **Terralia**.
 
-## 📚 Índice de Documentación
+## Índice de Documentación
 
 ### Análisis y Arquitectura
 
@@ -24,14 +24,14 @@ Bienvenido a la documentación técnica y funcional del proyecto **Agraria**.
 
 ---
 
-## 🚀 Acerca del Proyecto
+## Acerca del Proyecto
 
-Esta documentación contiene toda la información necesaria para comprender, desarrollar y utilizar la aplicación Agraria.
+Esta documentación contiene toda la información necesaria para comprender, desarrollar y utilizar la aplicación Terralia.
 
-## 📝 Cómo Usar Esta Documentación
+## Cómo Usar Esta Documentación
 
 Navega a través de los diferentes documentos usando los enlaces anteriores. Cada documento está escrito en formato Markdown y puede ser visualizado directamente en GitHub o en GitHub Pages.
 
 ---
 
-© 2025 Agraria - Documentación del Proyecto
+© 2025 Terralia - Documentación del Proyecto

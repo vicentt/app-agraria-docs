@@ -46,7 +46,7 @@ Arquitectura de 3 capas con frontend móvil, backend RESTful API y base de datos
 
 ┌─────────────────────────────────────────┐
 │   NOTIFICATIONS (Firebase Cloud Msg)    │
-│  - Push notifications (4 types)         │
+│  - Push notifications (17 types)        │
 │  - Device token management              │
 └─────────────────────────────────────────┘
 
@@ -215,6 +215,17 @@ Arquitectura de 3 capas con frontend móvil, backend RESTful API y base de datos
 ├── /Filters                     # Action filters
 │   ├── AdminAuthFilter.cs
 │   └── ValidateModelFilter.cs
+│
+├── /Admin                       # Módulo de aprobación (AdminModule)
+│   ├── admin.module.ts
+│   ├── admin.controller.ts
+│   ├── admin.service.ts
+│   ├── /dto
+│   │   ├── reject.dto.ts
+│   │   └── pending-counts.dto.ts
+│   └── /guards
+│       ├── roles.guard.ts       # RolesGuard - verifica rol admin
+│       └── approved-user.guard.ts # ApprovedUserGuard - verifica aprobación
 │
 ├── appsettings.json             # Configuration
 ├── appsettings.Development.json
@@ -844,9 +855,9 @@ PUT    /api/notifications/read-all     # Marcar todas leídas
 ### 4.8 Favoritos
 
 ```
-GET    /api/favorites                  # Mis favoritos
-POST   /api/favorites                  # Añadir favorito
-DELETE /api/favorites/{id}             # Eliminar favorito
+GET    /api/favorites?type=job|user&limit=N&page=N  # Mis favoritos (paginado, filtro por tipo)
+POST   /api/favorites                               # Añadir favorito (+ notif push + email al autor)
+DELETE /api/favorites/{id}                           # Eliminar favorito
 ```
 
 ### 4.9 Categorías
@@ -864,6 +875,52 @@ GET    /api/admin/users                # Lista usuarios
 PUT    /api/admin/users/{id}/suspend   # Suspender usuario
 GET    /api/admin/stats                # Dashboard stats
 ```
+
+### 4.11 Admin - Sistema de Aprobación (AdminModule)
+
+Endpoints dedicados al sistema de aprobación por administrador. Todos requieren autenticación con rol `admin` (protegidos por `RolesGuard`).
+
+```
+# Contadores globales de pendientes
+GET    /api/admin/pending-counts       # Contadores de entidades pendientes de aprobación
+                                       # Respuesta: { users, jobs, machinery, applications, reviews }
+
+# Aprobación de usuarios (ver RN-060)
+GET    /api/admin/users/pending        # Lista usuarios pendientes de aprobación
+PATCH  /api/admin/users/{id}/approve   # Aprobar usuario
+PATCH  /api/admin/users/{id}/reject    # Rechazar usuario (requiere rejection_reason)
+
+# Aprobación de trabajos (ver RN-061)
+GET    /api/admin/jobs/pending         # Lista trabajos pendientes de aprobación
+PATCH  /api/admin/jobs/{id}/approve    # Aprobar trabajo (pasa a 'published')
+PATCH  /api/admin/jobs/{id}/reject     # Rechazar trabajo (pasa a 'cancelled', requiere rejection_reason)
+
+# Aprobación de maquinaria (ver RN-062)
+GET    /api/admin/machinery/pending    # Lista maquinaria pendiente de aprobación
+PATCH  /api/admin/machinery/{id}/approve  # Aprobar maquinaria
+PATCH  /api/admin/machinery/{id}/reject   # Rechazar maquinaria (requiere rejection_reason)
+
+# Aprobación de aplicaciones (ver RN-063)
+GET    /api/admin/applications/pending    # Lista aplicaciones pendientes de aprobación
+PATCH  /api/admin/applications/{id}/approve  # Aprobar aplicación
+PATCH  /api/admin/applications/{id}/reject   # Rechazar aplicación (requiere rejection_reason)
+
+# Aprobación de reseñas
+GET    /api/admin/reviews                  # Lista reseñas (filtros: status, search, paginación)
+GET    /api/admin/reviews/pending          # Lista reseñas pendientes de aprobación
+GET    /api/admin/reviews/{id}             # Detalle de reseña con relaciones
+GET    /api/admin/reviews/{id}/actions     # Historial de acciones admin sobre la reseña
+PATCH  /api/admin/reviews/{id}            # Editar reseña (comentario, estado)
+PATCH  /api/admin/reviews/{id}/approve    # Aprobar reseña (actualiza rating + badges + notificación)
+PATCH  /api/admin/reviews/{id}/reject     # Rechazar reseña (requiere rejection_reason + notificación)
+DELETE /api/admin/reviews/{id}            # Soft delete de reseña
+```
+
+**Notas:**
+- Todas las acciones de aprobación/rechazo registran un `admin_action` en la tabla de auditoría (ver RN-066)
+- Los endpoints de rechazo requieren un campo `rejection_reason` en el body (ver RN-067)
+- Los endpoints GET de pendientes soportan paginación estándar (`?page=1&limit=20`)
+- Al aprobar una reseña, se recalcula el rating del usuario valorado y se evalúan badges
 
 ---
 
@@ -1135,6 +1192,41 @@ jobs:
 - **Rate limiting** (100 req/min por usuario, 1000 req/min global)
 - **HTTPS obligatorio** en producción
 - **CORS configurado** solo para dominios autorizados
+
+#### Guards del Sistema de Aprobación
+
+**RolesGuard** - Guard de autorización basado en roles:
+- Verifica que el usuario autenticado tenga el rol requerido (ej: `admin`)
+- Se aplica mediante decorador `@Roles('admin')` en controladores o endpoints específicos
+- Utilizado en todos los endpoints del `AdminModule` (sección 4.11)
+- Si el usuario no tiene el rol requerido, retorna `403 Forbidden`
+
+**ApprovedUserGuard** - Guard de usuario aprobado:
+- Verifica que el usuario autenticado tenga `approval_status = 'approved'` (ver RN-060)
+- Se aplica en todos los endpoints de escritura (crear trabajos, registrar maquinaria, enviar aplicaciones)
+- Usuarios con `approval_status = 'pending_approval'` solo pueden acceder en modo lectura (ver RN-064)
+- Si el usuario no está aprobado, retorna `403 Forbidden` con mensaje descriptivo
+
+#### AdminModule
+
+Módulo NestJS dedicado al sistema de aprobación por administrador:
+
+```
+api/src/admin/
+├── admin.module.ts              # Definición del módulo
+├── admin.controller.ts          # Endpoints de aprobación (sección 4.11)
+├── admin.service.ts             # Lógica de negocio de aprobación
+├── dto/
+│   ├── reject.dto.ts            # DTO con rejection_reason obligatorio
+│   └── pending-counts.dto.ts    # DTO de respuesta de contadores
+└── guards/
+    ├── roles.guard.ts           # RolesGuard
+    └── approved-user.guard.ts   # ApprovedUserGuard
+```
+
+- El módulo importa `UsersModule`, `JobsModule`, `MachineryModule`, `ApplicationsModule` y `ReviewsModule` para acceder a sus servicios
+- Registra los guards `RolesGuard` y `ApprovedUserGuard` como providers exportables para uso en otros módulos
+- Todas las acciones se auditan automáticamente en `admin_actions` (ver RN-066)
 
 ### 6.2 Validación de Inputs
 

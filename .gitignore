@@ -30,3 +30,9 @@ _site/
 
 # Vendor
 vendor/
+
+# Node
+node_modules/
+
+# Archivos demasiado grandes para GitHub (>100MB)
+MOCKUPS_APP_MOVIL.pdf

@@ -93,7 +93,7 @@ Modelo relacional normalizado (3FN) diseñado para PostgreSQL que soporta:
 
 ### 3.1 users (Usuarios)
 
-Almacena todos los usuarios (sin diferenciación de roles).
+Almacena todos los usuarios con diferenciación de roles y estado de aprobación.
 
 ```sql
 CREATE TABLE users (
@@ -103,6 +103,9 @@ CREATE TABLE users (
     email VARCHAR(255) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NULL, -- Null si usa Google OAuth
     google_id VARCHAR(255) NULL UNIQUE,
+
+    -- Rol del usuario
+    role VARCHAR(20) NOT NULL DEFAULT 'user', -- 'user' o 'admin'
 
     -- Datos personales (privados)
     full_name VARCHAR(255) NOT NULL,
@@ -128,6 +131,13 @@ CREATE TABLE users (
     is_suspended BOOLEAN DEFAULT false,
     suspension_reason TEXT NULL,
 
+    -- Aprobación por administrador (ver RN-060)
+    approval_status VARCHAR(30) NOT NULL DEFAULT 'pending_approval',
+    -- Valores: 'pending_approval', 'approved', 'rejected'
+    approved_at TIMESTAMP WITH TIME ZONE NULL,
+    approved_by UUID NULL REFERENCES users(id) ON DELETE SET NULL,
+    rejection_reason TEXT NULL,
+
     -- Timestamps
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
@@ -142,6 +152,9 @@ CREATE INDEX idx_users_email ON users(email) WHERE deleted_at IS NULL;
 CREATE INDEX idx_users_province ON users(province) WHERE deleted_at IS NULL;
 CREATE INDEX idx_users_rating ON users(rating_avg DESC) WHERE deleted_at IS NULL;
 CREATE INDEX idx_users_google_id ON users(google_id) WHERE google_id IS NOT NULL;
+CREATE INDEX idx_users_approval_status ON users(approval_status)
+    WHERE deleted_at IS NULL AND approval_status = 'pending_approval';
+CREATE INDEX idx_users_role ON users(role) WHERE deleted_at IS NULL;
 
 -- Trigger para updated_at
 CREATE OR REPLACE FUNCTION update_updated_at_column()
@@ -160,6 +173,10 @@ CREATE TRIGGER update_users_updated_at BEFORE UPDATE ON users
 - `preferred_categories`: JSONB con array de UUIDs de categorías (ej: `["uuid1", "uuid2", "uuid3"]`)
 - `password_hash`: NULL si el usuario usa solo Google OAuth
 - Soft delete: `deleted_at` permite "recuperar" usuarios eliminados
+- `role`: Diferencia entre usuarios normales (`user`) y administradores (`admin`)
+- `approval_status`: Estado de aprobación del usuario por parte de un administrador. Usuarios nuevos se registran como `pending_approval` (ver RN-060)
+- `approved_by`: Referencia al administrador que aprobó al usuario
+- `rejection_reason`: Motivo del rechazo, obligatorio cuando `approval_status = 'rejected'` (ver RN-067)
 
 ---
 
@@ -240,6 +257,12 @@ CREATE TABLE machinery (
     -- Estado
     is_operational BOOLEAN DEFAULT true,
 
+    -- Aprobación por administrador (ver RN-062)
+    approval_status VARCHAR(30) NOT NULL DEFAULT 'pending_approval',
+    -- Valores: 'pending_approval', 'approved', 'rejected'
+    approved_at TIMESTAMP WITH TIME ZONE NULL,
+    rejection_reason TEXT NULL,
+
     -- Timestamps
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
@@ -250,6 +273,8 @@ CREATE TABLE machinery (
 CREATE INDEX idx_machinery_user ON machinery(user_id) WHERE deleted_at IS NULL;
 CREATE INDEX idx_machinery_category ON machinery(category_id) WHERE deleted_at IS NULL;
 CREATE INDEX idx_machinery_user_category ON machinery(user_id, category_id) WHERE deleted_at IS NULL;
+CREATE INDEX idx_machinery_approval_status ON machinery(approval_status)
+    WHERE deleted_at IS NULL AND approval_status = 'pending_approval';
 
 -- Trigger
 CREATE TRIGGER update_machinery_updated_at BEFORE UPDATE ON machinery
@@ -260,6 +285,8 @@ CREATE TRIGGER update_machinery_updated_at BEFORE UPDATE ON machinery
 - `images`: JSONB con array de URLs (ej: `["https://blob.azure.com/img1.jpg", "..."]`)
 - Máximo 5 imágenes validado en capa de aplicación
 - ON DELETE CASCADE: si se elimina usuario, se elimina su maquinaria
+- `approval_status`: Estado de aprobación por administrador. Maquinaria nueva se crea como `pending_approval` (ver RN-062). Editar maquinaria aprobada revierte el estado a `pending_approval` (ver RN-065)
+- `rejection_reason`: Motivo del rechazo, obligatorio cuando `approval_status = 'rejected'` (ver RN-067)
 
 ---
 
@@ -277,8 +304,7 @@ CREATE TABLE jobs (
     -- Pseudónimo generado (para anonimato)
     pseudonym VARCHAR(50) NOT NULL UNIQUE, -- Ej: "Agricultor_X7K2"
 
-    -- Categoría
-    category_id UUID NOT NULL REFERENCES categories(id) ON DELETE RESTRICT,
+    -- Categorías: relación many-to-many via tabla job_categories (1-3 categorías por trabajo)
 
     -- Información básica
     title VARCHAR(255) NOT NULL, -- Auto-generado según categoría
@@ -307,8 +333,8 @@ CREATE TABLE jobs (
     images JSONB NULL, -- Array de URLs (max 5)
 
     -- Estado
-    status VARCHAR(50) NOT NULL DEFAULT 'published',
-    -- Valores: 'published', 'selecting', 'assigned', 'in_progress', 'completed', 'cancelled'
+    status VARCHAR(50) NOT NULL DEFAULT 'pending_approval',
+    -- Valores: 'pending_approval', 'published', 'selecting', 'assigned', 'in_progress', 'completed', 'cancelled'
 
     -- Proveedor seleccionado (si estado = assigned/in_progress/completed)
     selected_provider_id UUID NULL REFERENCES users(id) ON DELETE SET NULL,
@@ -324,12 +350,21 @@ CREATE TABLE jobs (
 
 -- Índices
 CREATE INDEX idx_jobs_requester ON jobs(requester_id) WHERE deleted_at IS NULL;
-CREATE INDEX idx_jobs_category ON jobs(category_id) WHERE deleted_at IS NULL;
 CREATE INDEX idx_jobs_status ON jobs(status) WHERE deleted_at IS NULL;
 CREATE INDEX idx_jobs_province ON jobs(province) WHERE deleted_at IS NULL;
-CREATE INDEX idx_jobs_feed ON jobs(category_id, province, created_at DESC)
+CREATE INDEX idx_jobs_feed ON jobs(province, created_at DESC)
     WHERE status IN ('published', 'selecting') AND deleted_at IS NULL;
 CREATE INDEX idx_jobs_pseudonym ON jobs(pseudonym) WHERE deleted_at IS NULL;
+
+-- Tabla junction para categorías (1-3 por trabajo)
+CREATE TABLE job_categories (
+    job_id UUID NOT NULL REFERENCES jobs(id) ON DELETE CASCADE,
+    category_id UUID NOT NULL REFERENCES categories(id) ON DELETE RESTRICT,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (job_id, category_id)
+);
+CREATE INDEX idx_job_categories_job ON job_categories(job_id);
+CREATE INDEX idx_job_categories_category ON job_categories(category_id);
 
 -- Trigger
 CREATE TRIGGER update_jobs_updated_at BEFORE UPDATE ON jobs
@@ -338,9 +373,10 @@ CREATE TRIGGER update_jobs_updated_at BEFORE UPDATE ON jobs
 
 **Notas:**
 - `pseudonym`: Generado automáticamente al crear el trabajo
-- `status`: Cambiado manualmente por admin (excepto 'published' → 'selecting' automático)
+- `status`: El estado por defecto es `pending_approval`. El administrador aprueba el trabajo (pasando a `published`) o lo rechaza (pasando a `cancelled`). Transiciones posteriores: 'published' → 'selecting' automático (ver RN-061, RN-068)
 - `required_machinery`: Array JSON de strings (ej: `["Tractor", "Sembradora"]`)
 - Índice compuesto para feed optimizado
+- Editar un trabajo aprobado (`published`) revierte su estado a `pending_approval` (ver RN-065)
 
 ---
 
@@ -372,6 +408,12 @@ CREATE TABLE applications (
     status VARCHAR(50) NOT NULL DEFAULT 'pending',
     -- Valores: 'pending', 'accepted', 'rejected'
 
+    -- Aprobación por administrador (ver RN-063)
+    approval_status VARCHAR(30) NOT NULL DEFAULT 'pending_approval',
+    -- Valores: 'pending_approval', 'approved', 'rejected'
+    approved_at TIMESTAMP WITH TIME ZONE NULL,
+    rejection_reason TEXT NULL,
+
     -- Timestamps
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
@@ -386,6 +428,8 @@ CREATE INDEX idx_applications_job ON applications(job_id) WHERE deleted_at IS NU
 CREATE INDEX idx_applications_provider ON applications(provider_id) WHERE deleted_at IS NULL;
 CREATE INDEX idx_applications_status ON applications(status) WHERE deleted_at IS NULL;
 CREATE INDEX idx_applications_job_status ON applications(job_id, status) WHERE deleted_at IS NULL;
+CREATE INDEX idx_applications_approval_status ON applications(approval_status)
+    WHERE deleted_at IS NULL AND approval_status = 'pending_approval';
 
 -- Trigger
 CREATE TRIGGER update_applications_updated_at BEFORE UPDATE ON applications
@@ -396,12 +440,15 @@ CREATE TRIGGER update_applications_updated_at BEFORE UPDATE ON applications
 - `machinery_ids`: Array JSON de UUIDs (ej: `["uuid1", "uuid2"]`)
 - `provider_pseudonym`: Generado automáticamente al aplicar
 - Constraint UNIQUE evita múltiples aplicaciones del mismo proveedor al mismo trabajo
+- `approval_status`: Estado de aprobación por administrador. Aplicaciones nuevas se crean como `pending_approval` y no son visibles para el propietario del trabajo hasta ser aprobadas (ver RN-063). Editar una aplicación aprobada revierte el estado a `pending_approval` (ver RN-065)
+- `rejection_reason`: Motivo del rechazo, obligatorio cuando `approval_status = 'rejected'` (ver RN-067)
+- **Nota:** `status` (pending/accepted/rejected) se refiere a la decisión del propietario del trabajo; `approval_status` se refiere a la aprobación del administrador
 
 ---
 
 ### 3.6 reviews (Reseñas)
 
-Valoraciones mutuas post-trabajo.
+Valoraciones mutuas post-trabajo. Las reseñas requieren aprobación de un administrador antes de ser visibles públicamente y afectar al rating del usuario valorado.
 
 ```sql
 CREATE TABLE reviews (
@@ -416,6 +463,12 @@ CREATE TABLE reviews (
     rating INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
     comment TEXT NOT NULL, -- Obligatorio, min 20 chars, max 200 chars
 
+    -- Aprobación por administrador
+    approval_status VARCHAR(50) NOT NULL DEFAULT 'pending_approval',
+    -- Valores: 'pending_approval', 'approved', 'rejected'
+    approved_at TIMESTAMP WITH TIME ZONE NULL,
+    rejection_reason TEXT NULL,
+
     -- Timestamps
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
@@ -429,6 +482,8 @@ CREATE TABLE reviews (
 CREATE INDEX idx_reviews_reviewed ON reviews(reviewed_id) WHERE deleted_at IS NULL;
 CREATE INDEX idx_reviews_job ON reviews(job_id) WHERE deleted_at IS NULL;
 CREATE INDEX idx_reviews_rating ON reviews(reviewed_id, rating DESC) WHERE deleted_at IS NULL;
+CREATE INDEX idx_reviews_approval_pending
+    ON reviews(approval_status) WHERE approval_status = 'pending_approval';
 
 -- Trigger
 CREATE TRIGGER update_reviews_updated_at BEFORE UPDATE ON reviews
@@ -439,7 +494,9 @@ CREATE TRIGGER update_reviews_updated_at BEFORE UPDATE ON reviews
 - `reviewer_id`: Quien deja la reseña
 - `reviewed_id`: Quien recibe la reseña
 - Validación de longitud de comentario en capa de aplicación
-- No se permite editar reseñas (no hay UPDATE desde app)
+- No se permite editar reseñas desde la app (el admin puede editar comentarios desde el panel)
+- `approval_status`: Las reseñas nuevas se crean como `pending_approval`. El rating del usuario valorado NO se actualiza hasta que la reseña sea aprobada por un admin
+- `rejection_reason`: Motivo del rechazo, obligatorio cuando `approval_status = 'rejected'`
 
 ---
 
@@ -533,7 +590,11 @@ CREATE TABLE notifications (
 
     -- Tipo de notificación
     type VARCHAR(50) NOT NULL,
-    -- Valores: 'new_job_in_area', 'application_received', 'application_accepted', 'job_status_changed'
+    -- Valores: 'new_job_in_area', 'application_received', 'application_accepted', 'application_rejected',
+    --          'job_status_changed', 'user_approved', 'user_rejected', 'job_approved', 'job_rejected',
+    --          'machinery_approved', 'machinery_rejected', 'application_approved_by_admin',
+    --          'application_rejected_by_admin', 'account_suspended', 'account_reactivated',
+    --          'password_changed', 'review_received', 'review_approved', 'review_rejected'
 
     -- Contenido
     title_es VARCHAR(255) NOT NULL,
@@ -775,22 +836,28 @@ WHERE j.deleted_at IS NULL
 
 ### 6.1 Actualizar Rating de Usuario Automáticamente
 
+El trigger recalcula el rating solo contando reseñas aprobadas. Se dispara tanto al crear una reseña como al cambiar su `approval_status` (al aprobar/rechazar desde admin).
+
 ```sql
 CREATE OR REPLACE FUNCTION update_user_rating()
 RETURNS TRIGGER AS $$
 BEGIN
-    -- Recalcular rating promedio y count del usuario revisado
+    -- Recalcular rating promedio y count del usuario revisado (solo reseñas aprobadas)
     UPDATE users
     SET
         rating_avg = (
             SELECT COALESCE(AVG(rating), 0.0)
             FROM reviews
-            WHERE reviewed_id = NEW.reviewed_id AND deleted_at IS NULL
+            WHERE reviewed_id = NEW.reviewed_id
+              AND deleted_at IS NULL
+              AND approval_status = 'approved'
         ),
         rating_count = (
             SELECT COUNT(*)
             FROM reviews
-            WHERE reviewed_id = NEW.reviewed_id AND deleted_at IS NULL
+            WHERE reviewed_id = NEW.reviewed_id
+              AND deleted_at IS NULL
+              AND approval_status = 'approved'
         )
     WHERE id = NEW.reviewed_id;
 
@@ -799,7 +866,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER trigger_update_user_rating
-AFTER INSERT ON reviews
+AFTER INSERT OR UPDATE OF approval_status ON reviews
 FOR EACH ROW
 EXECUTE FUNCTION update_user_rating();
 ```
@@ -893,8 +960,12 @@ $$ LANGUAGE plpgsql;
 
 ```sql
 -- Búsqueda de trabajos por múltiples filtros
-CREATE INDEX idx_jobs_filters ON jobs(category_id, province, start_year, start_month, status)
+CREATE INDEX idx_jobs_filters ON jobs(province, start_year, start_month, status)
     WHERE deleted_at IS NULL;
+
+-- Trabajos pendientes de aprobación (para panel admin)
+CREATE INDEX idx_jobs_pending_approval ON jobs(created_at DESC)
+    WHERE status = 'pending_approval' AND deleted_at IS NULL;
 
 -- Aplicaciones ordenadas por fecha (para solicitante viendo aplicaciones)
 CREATE INDEX idx_applications_job_created ON applications(job_id, created_at DESC)
@@ -1071,19 +1142,21 @@ SELECT
     j.pseudonym,
     j.title,
     j.description,
-    c.name_es AS category,
     j.province,
     j.municipality,
     j.estimated_price_min,
     j.estimated_price_max,
     j.created_at,
     CASE
-        WHEN j.category_id = ANY(u.preferred_categories::uuid[]) THEN 3
+        WHEN EXISTS (
+            SELECT 1 FROM job_categories jc
+            WHERE jc.job_id = j.id
+            AND jc.category_id = ANY(u.preferred_categories::uuid[])
+        ) THEN 3
         WHEN j.province = u.province THEN 2
         ELSE 1
     END AS relevance_score
 FROM jobs j
-INNER JOIN categories c ON j.category_id = c.id
 CROSS JOIN users u
 WHERE u.id = '...' -- User ID del proveedor
   AND j.status IN ('published', 'selecting')
